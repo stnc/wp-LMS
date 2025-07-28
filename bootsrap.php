@@ -10,12 +10,8 @@ Domain Path: /languages/
 */
 
 require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer autoload
-
-
-
 require_once ('helper_temp.php');
 require_once "app/shortcut/helix_shortcode.php";
-
 
 // use Helix\Loader\Menu as LoadMenu; // new LoadMenu();
 use Helix\Loader\Loading;
@@ -24,16 +20,6 @@ include ('app/view/homepage/homepage.php');
 require_once "app/controller/router.php";
 require_once "app/view/DattaTaable/db_list.php";
 require_once "app/view/about/helixForm-adminMenu_About.php";
-
-
-
-
-
-
-
-
-
-
 
 
 //TODO: database install 

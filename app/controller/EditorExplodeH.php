@@ -138,8 +138,6 @@ class EditorExplodeH extends Controller
 
         //    echo "<pre>";
         //    print_r($translate_json);
-        //    echo "<pre>";
-        //    print_r($main_language_json);
 
         $wpdb->update(
             $helixFormTableNameMain,
@@ -196,12 +194,10 @@ class EditorExplodeH extends Controller
         $translate_decode = json_decode($translate_data, false, 512, JSON_BIGINT_AS_STRING);
         $translate_language_json = " ";
 
-
-
-        $gruplar = array_chunk($translate_decode, 4);
+        $groups = array_chunk($translate_decode, 4);
 
         // Grupları yazdır
-        foreach ($gruplar as $index => $translate_decode) {
+        foreach ($groups as $index => $translate_decode) {
             $translate_language_json .= "<tr>";
             foreach ($translate_decode as $key => $value) {
                 $translate_language_json .= "<td>" . $this->engLib->htmlTranslate($value) . "</td>";
