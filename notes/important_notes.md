@@ -37,6 +37,14 @@ https://sharesitecoreinfo.wordpress.com/2017/06/19/use-handlebar-template-to-bin
 https://themeselection.com/item/materio-dashboard-free-bootstrap/
 
 
+# react js 
+
+https://github.com/wptrainingteam/unadorned-announcement-bar
+
+https://snipcart.com/blog/reactjs-wordpress-rest-api-example
+
+https://github.com/snipcart/wordpress-rest-api-react
+
 
 # composer code 
 
