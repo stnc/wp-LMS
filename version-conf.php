@@ -6,7 +6,7 @@ add_action('init', 'app_output_buffer');
 
 
 function helix_default_setting(){
-    $version = '2.0.0';
+    $version = '2.1.0';
     $helix_plugin_path= trailingslashit(plugin_dir_path(__FILE__));
     $helix_plugin_url= trailingslashit(plugins_url( __FILE__));
     $helix_plugin_dir_url= trailingslashit(plugin_dir_url( __FILE__));
