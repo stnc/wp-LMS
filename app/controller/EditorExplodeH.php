@@ -17,7 +17,11 @@ class EditorExplodeH extends Controller
         global $wpdb;
         $this->helixFormTableNameMain = $wpdb->prefix . 'helix_words';
       
-        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/common_header.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/wrapper01-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/sidebar02-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/body03-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/nav04-XHTML.php');
+
 
         $this->engLib = new EditorExplodeLib();
 
@@ -109,6 +113,7 @@ class EditorExplodeH extends Controller
 
         // echo "<pre>";
         require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
     /**
@@ -208,6 +213,7 @@ class EditorExplodeH extends Controller
 
 
         require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
     /**

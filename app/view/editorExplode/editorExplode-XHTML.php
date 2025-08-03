@@ -1,7 +1,7 @@
 <?php
 
 
-$id =   isset($_GET['id']) ? sanitize_text_field($_GET['id']) : "";
+$id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : "";
 
 
 // $title = "Add"; 
@@ -17,7 +17,7 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
 
 
 if (isset($_SESSION['helix_map_flash_msg'])) {
-?>
+    ?>
     <p class="alert alert-success">
         <?php echo $_SESSION['helix_map_flash_msg']; ?>
     </p>
@@ -25,133 +25,84 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
 <?php } ?>
 
 
-
-
-<form action="/wp-admin/admin.php?page=editor_explodeH&trigger=store&id=<?php echo  $id ?>" method="post">
-    <main class="flex-shrink-0" style="">
-        <section class="container" id="dracula">
+<div class="content">
+    <div class="container-fluid">
+        <form action="/wp-admin/admin.php?page=editor_explodeH&trigger=store&id=<?php echo $id ?>" method="post">
 
             <div class="row">
-                <div class="col-lg-10">
-                    <div class="card" style="max-width: 100%;">
+                <div class="col-lg-6">
+                    <div class="card">
                         <div class="card-header">Main Language</div>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo  $main_language  ?></h5>
-                            <div class="row g-2 data_main_language"  id="data_main_language1">
+                            <h5 class="card-title"><?php echo $main_language ?></h5>
+                            <div class="row g-2 data_main_language" id="data_main_language">
                                 <?php echo $main_language_json ?>
+                            </div>
+                            <div class="row g-2">
+                                <a href="javascript:void(0);" class="add_button" title="Add field"><img
+                                        src="/wp-content/uploads/2025/03/add-icon.png">EKLE</a>
 
                             </div>
                         </div>
                     </div>
+          
 
+                </div>
 
+                <div class="col-lg-6">
                     <div class="card" id="kelimatorButton" style="max-width: 100%;">
                         <div class="card-header">card olarak</div>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo  $main_language  ?></h5>
-                            <div class="row g-2 data_main_language "  id="data_main_language ">
-                        
+                            <h5 class="card-title"><?php echo $main_language ?></h5>
+                            <div class="row g-2 data_main_language1 " id="data_main_language1">
+
                                 <?php echo $button_html_json ?>
 
                             </div>
                         </div>
                     </div>
 
-
-                </div>
-
-
-                <div class="col-lg-2">
-                    <div class="card" style="max-width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Ekle</h5>
-                            <div class="row g-2">
-                            <a href="javascript:void(0);" class="add_button" title="Add field"><img src="/wp-content/uploads/2025/03/add-icon.png"></a>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
+
             <div class="row">
-                <div class="col-lg-10">
-                    <div class="card" style="max-width: 100%;">
+                <div class="col-lg-12">
+                    <div class="card">
                         <div class="card-header">Translate</div>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo  $translate  ?> </h5>
-                          
+                            <h5 class="card-title"><?php echo $translate ?> </h5>
                             <div id="redips-drag" class="row g-2 data_translate_language">
-        
-                         
-
-
-
-
-
-                            <table id="table11">
-        <colgroup>
-        <col width="50">
-            <col width="50">
-            <col width="50">
-            <col width="50">
-            
-          
-            
-
-           
-        </colgroup>
-        <tbody>
-        <?php echo $translate_language_json ?>
-            
-            
-
-        </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
-                           
-
+                                <table id="table11">
+                                    <colgroup>
+                                        <col width="50">
+                                        <col width="50">
+                                        <col width="50">
+                                        <col width="50">
+                                    </colgroup>
+                                    <tbody>
+                                        <?php echo $translate_language_json ?>
+                                    </tbody>
+                                </table>
                             </div>
 
-
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-2">
-                    <div class="card" style="max-width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Ekle</h5>
                             <div class="row g-2">
-                            <a href="javascript:void(0);" class="add_button_translate" title="add_button_translate"><img src="/wp-content/uploads/2025/03/add-icon.png"></a>
+                                <a href="javascript:void(0);" class="add_button_translate"
+                                    title="add_button_translate"><img
+                                        src="/wp-content/uploads/2025/03/add-icon.png">Ekle</a>
 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
 
             </div>
-        </section>
 
-        <section class="container">
             <div class="row">
 
-            <div class="col-lg-10">
+                <div class="col-lg-10">
                     <div class="card" style="max-width: 100%;">
                         <div class="card-body">
                             <div class="row g-2">
@@ -172,57 +123,56 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
                     </div>
                 </div>
             </div>
-            </div>
-        </section>
-</form>
+        </form>
+    </div>
+</div>
 
-</main>
 
 
 
 <script src="https://cdn.jsdelivr.net/gh/dbunic/REDIPS_drag@master/redips-drag-min.js"></script>
-  
+
 <script>
-    /**  DRAG AND DROP   */  
-//https://jsfiddle.net/v4qhdmzL/83/
+    /**  DRAG AND DROP   */
+    //https://jsfiddle.net/v4qhdmzL/83/
 
 
-// create container
-var redips = {};
+    // create container
+    var redips = {};
 
-// initialization
-redips.init = function () {
-    // set reference to the REDIPS.drag library
-    var rd = REDIPS.drag;
-    // REDIPS.drag initialization
-    rd.init();
-};
+    // initialization
+    redips.init = function () {
+        // set reference to the REDIPS.drag library
+        var rd = REDIPS.drag;
+        // REDIPS.drag initialization
+        rd.init();
+    };
 
-// read values from "data-" attributes of dataName
-redips.getData = function (dataName) {
-	// variables
-  var tbl = document.getElementById('table11'),	// reference to the main table
-  		div = tbl.getElementsByTagName('DIV'),		// collect all DIV elements from main table
-      dataValue,
-      arr = [],
-      i;
-      
-  // loop through DIV collection
-  for (i = 0; i < div.length; i++) {
-  	// read data value from current DIV element
-    dataValue = div[i].dataset[dataName];
-    // add value to the array if dataValue exists in HTML attribute
-  	// and array already doesnt contain that value
-    if (dataValue !== undefined && arr.indexOf(dataValue) === -1) {
-			arr.push(dataValue);
-    }
-  }
-  // display uniq values from "data-" attributes
-  alert(dataName + ' - ' + arr.toString());
-};
+    // read values from "data-" attributes of dataName
+    redips.getData = function (dataName) {
+        // variables
+        var tbl = document.getElementById('table11'),	// reference to the main table
+            div = tbl.getElementsByTagName('DIV'),		// collect all DIV elements from main table
+            dataValue,
+            arr = [],
+            i;
+
+        // loop through DIV collection
+        for (i = 0; i < div.length; i++) {
+            // read data value from current DIV element
+            dataValue = div[i].dataset[dataName];
+            // add value to the array if dataValue exists in HTML attribute
+            // and array already doesnt contain that value
+            if (dataValue !== undefined && arr.indexOf(dataValue) === -1) {
+                arr.push(dataValue);
+            }
+        }
+        // display uniq values from "data-" attributes
+        alert(dataName + ' - ' + arr.toString());
+    };
 
 
-redips.droppedBefore = function (targetCell) {
+    redips.droppedBefore = function (targetCell) {
         // test if target cell is occupied and set reference to the dragged DIV element
         var empty = redips.emptyCell(targetCell, 'test'),
             obj = redips.obj;
@@ -246,12 +196,12 @@ redips.droppedBefore = function (targetCell) {
     };
 
 
-// add onload event listener
-if (window.addEventListener) {
-    window.addEventListener('load', redips.init, false);
-}
-else if (window.attachEvent) {
-    window.attachEvent('onload', redips.init);
-}
+    // add onload event listener
+    if (window.addEventListener) {
+        window.addEventListener('load', redips.init, false);
+    }
+    else if (window.attachEvent) {
+        window.attachEvent('onload', redips.init);
+    }
 
 </script>

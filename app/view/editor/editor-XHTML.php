@@ -15,7 +15,7 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
 
 <div class="content">
     <div class="container-fluid">
- 
+
 
         <?php
         if (isset($_SESSION['helix_map_flash_msg'])) {
@@ -29,14 +29,21 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
         <?php echo $form ?>
 
         <input type="hidden" value="<?php echo $media_id ?>" name="media_id" id="media_id">
+
+
+
+
+
+
+
         <div class="row">
 
             <div class="col-8">
-       
+
                 <div class="card" style="max-width:100%">
-                <div class="card-header"><?php esc_html_e('Language Add', 'helix-lng') ?></div>
+                    <div class="card-header"><?php esc_html_e('Language Add', 'helix-lng') ?></div>
                     <div class="card-body">
-                    <h5 class="card-title"></h5>
+                        <h5 class="card-title"></h5>
                         <div class="form-group">
                             <span>Ne tur bir konusma metni? </span>
                             <?php if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) { ?>
@@ -44,9 +51,13 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
                                     $checkControl = helix_searchArray($nlist, $categories->level_id);
                                     ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" <?php if ($checkControl) { echo 'checked'; } ?> name="speakLevelList[]" id="speakLevelList<?php echo $categories->level_id ?>"
+                                        <input class="form-check-input" type="checkbox" <?php if ($checkControl) {
+                                            echo 'checked';
+                                        } ?> name="speakLevelList[]"
+                                            id="speakLevelList<?php echo $categories->level_id ?>"
                                             value="<?php echo $categories->level_id ?>">
-                                        <label class="form-check-label" for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
+                                        <label class="form-check-label"
+                                            for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
                                     </div>
 
                                 <?php endforeach ?>
@@ -76,7 +87,8 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
                                     <option <?php if ($categories->level_id == $level_cat_id)
                                         echo 'selected'; ?>
                                         for="level_cat_id" value="<?php echo $categories->level_id ?>">
-                                        <?php echo $categories->name ?></option>
+                                        <?php echo $categories->name ?>
+                                    </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -92,7 +104,8 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
                                     <option <?php if ($value->vocable_level_id == $vocable_level)
                                         echo 'selected'; ?>
                                         for="level" value="<?php echo $value->vocable_level_id ?>">
-                                        <?php echo $value->name ?></option>
+                                        <?php echo $value->name ?>
+                                    </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -218,8 +231,3 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
 
     </div>
 </div>
-
-
-
-
-
