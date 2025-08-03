@@ -12,7 +12,11 @@ class EditorH extends Controller
     {
         global $wpdb;
         $this->helixFormTableNameMain = $wpdb->prefix . 'helix_words';
-        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/common_header.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/wrapper01-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/sidebar02-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/body03-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/nav04-XHTML.php');
+        // require(HELIX_PLUGIN_PATH . 'app/view/masterPage/common_header.php');
 
         if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'new')) {
             $this->create();
@@ -92,7 +96,9 @@ class EditorH extends Controller
         $vocable_tense_list = $wpdb->get_results($sql_tense_List);
 
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editor/editorXHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/editor/editor-XHTML.php');
+        // require(HELIX_PLUGIN_PATH . 'app/view/editor/content.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
     /**
@@ -204,7 +210,10 @@ class EditorH extends Controller
 
 
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editor/editorXHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/editor/editor-XHTML.php');
+     
+        // require(HELIX_PLUGIN_PATH . 'app/view/editor/content.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
     /**

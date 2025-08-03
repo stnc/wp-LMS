@@ -60,7 +60,23 @@ jQuery(document).ready(function ($) {
     });
 
 
+    // Bootstrap Simple Admin Template Website: https://github.com/alexis-luna/bootstrap-simple-admin-template
+        // Toggle sidebar on Menu button click
+        jQuery('#sidebarCollapse').on('click', function() {
+            jQuery('#sidebar').toggleClass('active');
+            jQuery('#body').toggleClass('active');
+        });
+
+        // Auto-hide sidebar on window resize if window size is small
+        // $(window).on('resize', function () {
+        //     if ($(window).width() <= 768) {
+        //         $('#sidebar, #body').addClass('active');
+        //     }
+        // });
+        //Bootstrap Simple Admin Template
 
 
 });
+
+
 

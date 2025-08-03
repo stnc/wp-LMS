@@ -46,6 +46,15 @@ https://snipcart.com/blog/reactjs-wordpress-rest-api-example
 https://github.com/snipcart/wordpress-rest-api-react
 
 
+ # modal nox 
+
+https://biati-digital.github.io/glightbox/
+
+https://dimsemenov.com/plugins/magnific-popup/
+
+https://github.com/DubFriend/jquery.repeater
+
+
 # composer code 
 
 D:\xampp\php\php.exe composer.phar install

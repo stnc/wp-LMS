@@ -12,7 +12,7 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
     $form = '<form action="/wp-admin/admin.php?page=editor_explodeH&trigger=update&id=' . $id . '" method="post">';
 }
 
-include("common_header.php");
+
 
 
 
@@ -23,37 +23,6 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
     </p>
     <?php unset($_SESSION['helix_map_flash_msg']); ?>
 <?php } ?>
-
-
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
-    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<style>
-table {
-  border-collapse: collapse;
-  margin: 20px;
-  font-family: sans-serif;
-}
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  text-align: center;
-}
-th {
-  background-color: #007BFF;
-  color: white;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-</style>
-
-
-
 
 
 

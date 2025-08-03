@@ -41,8 +41,23 @@ add_action('admin_body_class',  'helix_admin_body_class');
 
 
 
+if (isset($_GET['page']) && 'helix_homepage' === $_GET['page']) {
+  add_action('admin_init', 'helix_remove_default_stylesheets');
+
+} else if (isset($_GET['page']) && 'editorH' === $_GET['page']) {
+  add_action('admin_init', 'helix_remove_default_stylesheets');
+
+} else if (isset($_GET['page']) && 'editor_explodeH' === $_GET['page']) {
+  add_action('admin_init', 'helix_remove_default_stylesheets');
+}
 
 
+
+    // this will remove the stylesheet when init fire
+    // this is your function to deregister the default admin stylesheet
+    function helix_remove_default_stylesheets() {
+    wp_deregister_style('wp-admin');
+    }
 
 
 

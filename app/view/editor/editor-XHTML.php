@@ -11,16 +11,11 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
     //$title = esc_html_e('Show', 'helix-lng');
     $form = '<form action="/wp-admin/admin.php?page=editorH&trigger=update&id=' . $id . '" method="post">';
 }
-
-include("common_header.php");
 ?>
 
-
-
-
-
-<main class="flex-shrink-0" style="">
+<div class="content">
     <div class="container-fluid">
+ 
 
         <?php
         if (isset($_SESSION['helix_map_flash_msg'])) {
@@ -37,10 +32,11 @@ include("common_header.php");
         <div class="row">
 
             <div class="col-8">
-                <h5 class="card-title"> <?php esc_html_e('Language Add', 'helix-lng') ?></h5>
+       
                 <div class="card" style="max-width:100%">
+                <div class="card-header"><?php esc_html_e('Language Add', 'helix-lng') ?></div>
                     <div class="card-body">
-
+                    <h5 class="card-title"></h5>
                         <div class="form-group">
                             <span>Ne tur bir konusma metni? </span>
                             <?php if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) { ?>
@@ -48,13 +44,9 @@ include("common_header.php");
                                     $checkControl = helix_searchArray($nlist, $categories->level_id);
                                     ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" <?php if ($checkControl) {
-                                            echo 'checked';
-                                        } ?> name="speakLevelList[]"
-                                            for="speakLevelList<?php echo $categories->level_id ?>"
+                                        <input class="form-check-input" type="checkbox" <?php if ($checkControl) { echo 'checked'; } ?> name="speakLevelList[]" id="speakLevelList<?php echo $categories->level_id ?>"
                                             value="<?php echo $categories->level_id ?>">
-                                        <label class="form-check-label"
-                                            for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
+                                        <label class="form-check-label" for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
                                     </div>
 
                                 <?php endforeach ?>
@@ -222,5 +214,12 @@ include("common_header.php");
         </div>
 
         <?php echo '</form>' ?>
+
+
     </div>
-</main>
+</div>
+
+
+
+
+
