@@ -109,9 +109,6 @@ class EditorExplodeH extends Controller
             $translate_language_json .= "</tr>";
         }
 
-
-
-        // echo "<pre>";
         require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }

@@ -15,6 +15,19 @@ function helix_about_page()
 
             </div>
 <pre>
+
+================================================================================
+        v2.1.2 Important changes and bug fixes in the release 
+================================================================================
+- Implemented: tum arayuzler yeni admin paneline basariyla tasindi 
+
+
+================================================================================
+        v2.1.1 Important changes and bug fixes in the release 
+================================================================================
+- Implemented: https://github.com/devopspower/bootstrap-simple-admin-template  yeni admin panel arayuzu olarak secildi  ve arayuz  yapimina baslandi 
+
+
 ================================================================================
         v2.0.0 Important changes and bug fixes in the release 
 ================================================================================

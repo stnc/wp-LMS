@@ -71,10 +71,6 @@ class EditorH extends Controller
     {
         global $wpdb;
 
-
-        // $web_permission = '[{\"door_number_permission\":false,\"square_meters_permission\":false,\"email_permission\":false,\"phone_permission\":false,\"mobile_phone_permission\":false,\"web_site_permission\":false,\"translate_permission\":false,\"main_language_permission\":false}]';
-        // $data =  str_replace([" ", '\\'], "", $web_permission);
-        // $web_permission =  json_decode($data, true, JSON_UNESCAPED_SLASHES);
         $table = $wpdb->prefix . 'helix_level_categories';
         $sql_company_list = 'SELECT * FROM ' . $table . '  WHERE status=1';
         $categoriesList = $wpdb->get_results($sql_company_list);
@@ -84,8 +80,6 @@ class EditorH extends Controller
         $sql_vocable_level_List = 'SELECT * FROM ' . $table_vocable_level_List . '  WHERE status=1';
         $vocable_level_List = $wpdb->get_results($sql_vocable_level_List);
 
-
-
         $table = $wpdb->prefix . 'helix_speak_level_categories';
         $sql_SpeakLevelList = 'SELECT * FROM ' . $table . '  WHERE status=1';
         $categoriesSpeakLevelList = $wpdb->get_results($sql_SpeakLevelList);
@@ -94,9 +88,7 @@ class EditorH extends Controller
         $sql_tense_List = 'SELECT * FROM ' . $table_tense_list . '  WHERE status=1';
         $vocable_tense_list = $wpdb->get_results($sql_tense_List);
 
-
-        require(HELIX_PLUGIN_PATH . 'app/view/editor/editor-XHTML.php');
-        // require(HELIX_PLUGIN_PATH . 'app/view/editor/content.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/editorH/editorH-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
@@ -169,12 +161,6 @@ class EditorH extends Controller
         $translate = $data->translate;
         $is_json = $data->is_json;
 
-        // print_r(    $is_json);
-// die;
-
-        // $data =  str_replace([" ", '\\'], "", $web_permission);
-        // $web_permission =  json_decode($data, true, JSON_UNESCAPED_SLASHES);
-
         $table = $wpdb->prefix . 'helix_level_categories';
         $sql_company_list = 'SELECT * FROM ' . $table . '  WHERE status=1';
         $categoriesList = $wpdb->get_results($sql_company_list);
@@ -209,9 +195,7 @@ class EditorH extends Controller
 
 
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editor/editor-XHTML.php');
-     
-        // require(HELIX_PLUGIN_PATH . 'app/view/editor/content.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/editorH/editorH-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
@@ -238,10 +222,6 @@ class EditorH extends Controller
             array('id' => $this->model["id"])
         );
 
-        // var_dump($success1);
-
-
-
         if (isset($_POST['speakLevelList'])) {
             // print_r("gelir3");
             $wpdb->delete("{$wpdb->prefix}helix_level_categories_record", array('word_id' => $this->model["id"]));
@@ -259,7 +239,6 @@ class EditorH extends Controller
             $wpdb->delete("{$wpdb->prefix}helix_level_categories_record", array('word_id' => $this->model["id"]));
         }
 
-
         // if ($success1) {
         //   print_r("gelir last");
         $_SESSION['helix_map_flash_msg'] = __('Record Updated', 'helix-lng');
@@ -267,8 +246,6 @@ class EditorH extends Controller
         die;
         // }
     }
-
-
 
     /**
      * Remove the specified resource from storage.
