@@ -1,23 +1,5 @@
 <?php
 
-function helix_conjunction_shortcode($atts)
-{
-    $default = array(
-        'value' => '#',
-    );
-
-    $a = shortcode_atts($default, $atts);
-
-    return '
-    <h3 class="name">conjunction</h3>
-    <p class="symbol"> <a style="color: black;" href="' . $a['value'] . '">' . $a['value'] . '</a></p>
-';
-}
-
-add_shortcode('helix_conjunction_sc', 'helix_conjunction_shortcode');
-
-
-
 
 
 /*

@@ -26,7 +26,7 @@
         </li>
 
         <li>
-            <a href="/wp-admin/admin.php?page=editorH&trigger=new"><i
+            <a href="/wp-admin/admin.php?page=editorH&trigger=create"><i
                     class="fas fa-file-alt"></i><?php esc_html_e('Add', 'helix-lng') ?></a>
         </li>
 
