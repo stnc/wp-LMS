@@ -8,9 +8,9 @@ use Helix\Loader\I18n;
 use Helix\Loader\Assets\Admin;
 use Helix\Loader\Assets\Frontend;
 
-use Helix\Api\Wordpress\WpMenu;
+
 use Helix\Api\General\CategoriesAndDepencyPost;
-use Helix\Api\General\GeneralData;
+use Helix\Api\General\WpInfo;
 use Helix\Api\Wordpress\Widget\Widgets;
 use Helix\Api\Wordpress\Pages\Pages;
 use Helix\Api\Wordpress\Posts\Posts;
@@ -78,7 +78,7 @@ class Loading
         new Pages();
         new Posts();
         new CategoriesAndDepencyPost(); //TODO: not working - check it 
-        new GeneralData();
-        new WpMenu();
+        new WpInfo();
+   
     }
 }
