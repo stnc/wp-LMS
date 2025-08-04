@@ -1,5 +1,6 @@
-<?php 
-function app_output_buffer() {
+<?php
+function app_output_buffer()
+{
   ob_start();
 } // soi_output_buffer
 add_action('init', 'app_output_buffer');
@@ -7,18 +8,19 @@ add_action('init', 'app_output_buffer');
 $helix_fullpage_routes = array("helix_homepage", "editorH", "editor_explodeH");
 
 
-function helix_default_setting(){
-    $version = '2.1.2';
-    $helix_plugin_path= trailingslashit(plugin_dir_path(__FILE__));
-    $helix_plugin_url= trailingslashit(plugins_url( __FILE__));
-    $helix_plugin_dir_url= trailingslashit(plugin_dir_url( __FILE__));
+function helix_default_setting()
+{
+  $version = '2.1.2';
+  $helix_plugin_path = trailingslashit(plugin_dir_path(__FILE__));
+  $helix_plugin_url = trailingslashit(plugins_url(__FILE__));
+  $helix_plugin_dir_url = trailingslashit(plugin_dir_url(__FILE__));
 
-     return  array( 
-      "version" =>  $version,
-      "helixPluginPath" =>  $helix_plugin_path, 
-      "helixPluginUrl" =>   $helix_plugin_url,
-      "helixPluginDirUrl" => $helix_plugin_dir_url,
-     );
+  return array(
+    "version" => $version,
+    "helixPluginPath" => $helix_plugin_path,
+    "helixPluginUrl" => $helix_plugin_url,
+    "helixPluginDirUrl" => $helix_plugin_dir_url,
+  );
 }
 
 
@@ -26,30 +28,33 @@ function helix_admin_body_class($classes = '')
 {
   $onboarding_class = '';
   global $helix_fullpage_routes;
-  $findGetPage= isset($_GET['page']);
-  if (in_array( $findGetPage, $helix_fullpage_routes)){
+  $findGetPage = isset($_GET["page"]) ? $_GET["page"] :"empty";
+  if (in_array($findGetPage, $helix_fullpage_routes)) {
     $onboarding_class = 'helix-header-page';
   }
-  
-  $classes .= ' ' . $onboarding_class . ' ';;
+
+  $classes .= ' ' . $onboarding_class . ' ';
+  ;
   return $classes;
 }
 //https://deluxeblogtips.com/wordpress-admin-body-class/
-add_action('admin_body_class',  'helix_admin_body_class');
+add_action('admin_body_class', 'helix_admin_body_class');
 
 
 
-
-$findGetPage= isset($_GET['page']);
-if (in_array( $findGetPage, $helix_fullpage_routes)){
+$findGetPage = isset($_GET["page"]) ? $_GET["page"] :"empty";
+// echo $findGetPage ;
+// die;
+if (in_array($findGetPage, $helix_fullpage_routes)) {
   add_action('admin_init', 'helix_remove_default_stylesheets');
 }
 
-    // this will remove the stylesheet when init fire
-    // this is your function to deregister the default admin stylesheet
-    function helix_remove_default_stylesheets() {
-    wp_deregister_style('wp-admin');
-    }
+// this will remove the stylesheet when init fire
+// this is your function to deregister the default admin stylesheet
+function helix_remove_default_stylesheets()
+{
+  wp_deregister_style('wp-admin');
+}
 
 
 
