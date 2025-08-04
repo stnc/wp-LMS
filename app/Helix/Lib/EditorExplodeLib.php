@@ -219,7 +219,7 @@ class EditorExplodeLib
     }
     
     
-    public function helix_button_html_isotope($value, $no)
+    public function helix_button_html_isotopeUI($value, $no)
     {
         $no++;
     

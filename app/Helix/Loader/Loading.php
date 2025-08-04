@@ -5,6 +5,7 @@ namespace Helix\Loader;
 
 use Helix\Loader\Menu;
 use Helix\Loader\I18n;
+use Helix\Loader\Defaults;
 use Helix\Loader\Assets\Admin;
 use Helix\Loader\Assets\Frontend;
 
@@ -23,8 +24,8 @@ class Loading
      */
     public $name = 'HELIX LMS';
 
-     const class_version = '2.0.2';
-     const version = '2.0.2';
+    const class_version = '2.0.2';
+    const version = '2.0.2';
 
     /**
      * Define Plugin Constants
@@ -49,6 +50,7 @@ class Loading
     public function __construct()
     {
         $this->plugin_constants();
+        new Defaults();
         new I18n();
         $this->registerMenu();
         $this->registerAssets();
@@ -71,12 +73,17 @@ class Loading
         new Frontend();
     }
 
+
+
+
+
+
     public function wpDefaultsApi()
     {
         new Widgets();
         new Pages();
         new Posts();
-      //  new CategoriesAndDepencyPost(); //TODO: not working - check it 
+        //  new CategoriesAndDepencyPost(); //TODO: not working - check it 
         new WpInfo();
     }
 }

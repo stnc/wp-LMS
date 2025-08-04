@@ -12,6 +12,7 @@ Domain Path: /languages/
 require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer autoload
 require_once ('version-conf.php');
 require_once "app/shortcut/helix_shortcode.php";
+require_once "app/shortcut/helix_core_shortcode.php";
 
 // use Helix\Loader\Menu as LoadMenu; // new LoadMenu();
 use Helix\Loader\Loading;

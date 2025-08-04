@@ -17,7 +17,7 @@ class EditorH extends Controller
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/body03-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/nav04-XHTML.php');
 
-        if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'new')) {
+        if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'create')) {
             $this->create();
         }
 

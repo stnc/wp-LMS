@@ -1056,7 +1056,7 @@ table.dataTable>tbody>tr.child ul.dtr-details {
 /* drag objects */
 .redips-drag {
     cursor: move;
-    margin: auto;
+    margin: 10px;
     background-color: white;
     text-align: center;
     font-size: 22pt; /* needed for cloned object */
@@ -1067,6 +1067,10 @@ table.dataTable>tbody>tr.child ul.dtr-details {
     -moz-border-radius: 4px; /* FF */
 }
 
+.redips-drag input {
+    margin: 5px;
+    width: 96%!important;
+}
 
 /* tables */
 div#redips-drag table {

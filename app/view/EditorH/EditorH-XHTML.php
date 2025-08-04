@@ -217,7 +217,7 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
                         <?php endif; ?>
 
                         <?php if ($is_json == 0): ?>
-                            <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=new&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
+                            <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=create&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
                                 id="savebtn-helixMap2" class="btn btn-primary">Kelimeyi Parcala</a>
                         <?php endif; ?>
 

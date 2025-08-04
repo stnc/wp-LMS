@@ -25,7 +25,7 @@ class EditorExplodeH extends Controller
 
         $this->engLib = new EditorExplodeLib();
 
-        if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'new')) {
+        if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'create')) {
             $this->create();
         }
 
@@ -187,19 +187,14 @@ class EditorExplodeH extends Controller
         $main_language_json = "";
         $button_html_json = "";
         foreach ($main_language_decode as $key => $value) {
-
             $main_language_json .= $this->engLib->mainLanguageHtml($value);
             $button_html_json .= $this->engLib->helix_button_html_bootsrap($value, $key);
         }
-
-
 
         $translate_decode = json_decode($translate_data, false, 512, JSON_BIGINT_AS_STRING);
         $translate_language_json = " ";
 
         $groups = array_chunk($translate_decode, 4);
-
-        // Grupları yazdır
         foreach ($groups as $index => $translate_decode) {
             $translate_language_json .= "<tr>";
             foreach ($translate_decode as $key => $value) {
