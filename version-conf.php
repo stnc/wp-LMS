@@ -4,6 +4,8 @@ function app_output_buffer() {
 } // soi_output_buffer
 add_action('init', 'app_output_buffer');
 
+$helix_fullpage_routes = array("helix_homepage", "editorH", "editor_explodeH");
+
 
 function helix_default_setting(){
     $version = '2.1.2';
@@ -23,13 +25,9 @@ function helix_default_setting(){
 function helix_admin_body_class($classes = '')
 {
   $onboarding_class = '';
-  if (isset($_GET['page']) && 'helix_homepage' === $_GET['page']) {
-    $onboarding_class = 'helix-header-page';
-  
-  } else if (isset($_GET['page']) && 'editorH' === $_GET['page']) {
-    $onboarding_class = 'helix-header-page';
-
-  }  else if (isset($_GET['page']) && 'editor_explodeH' === $_GET['page']) {
+  global $helix_fullpage_routes;
+  $findGetPage= isset($_GET['page']);
+  if (in_array( $findGetPage, $helix_fullpage_routes)){
     $onboarding_class = 'helix-header-page';
   }
   
@@ -41,17 +39,11 @@ add_action('admin_body_class',  'helix_admin_body_class');
 
 
 
-if (isset($_GET['page']) && 'helix_homepage' === $_GET['page']) {
-  add_action('admin_init', 'helix_remove_default_stylesheets');
 
-} else if (isset($_GET['page']) && 'editorH' === $_GET['page']) {
-  add_action('admin_init', 'helix_remove_default_stylesheets');
-
-} else if (isset($_GET['page']) && 'editor_explodeH' === $_GET['page']) {
+$findGetPage= isset($_GET['page']);
+if (in_array( $findGetPage, $helix_fullpage_routes)){
   add_action('admin_init', 'helix_remove_default_stylesheets');
 }
-
-
 
     // this will remove the stylesheet when init fire
     // this is your function to deregister the default admin stylesheet

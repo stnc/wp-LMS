@@ -9,7 +9,7 @@ use Helix\Loader\Assets\Admin;
 use Helix\Loader\Assets\Frontend;
 
 
-use Helix\Api\General\CategoriesAndDepencyPost;
+// use Helix\Api\General\CategoriesAndDepencyPost;
 use Helix\Api\General\WpInfo;
 use Helix\Api\Wordpress\Widget\Widgets;
 use Helix\Api\Wordpress\Pages\Pages;
@@ -21,10 +21,10 @@ class Loading
     /**
      * @var string
      */
-    public $name = 'HELIX ENGLISH';
+    public $name = 'HELIX LMS';
 
-    // const class_version = '2.0.2';
-    // const version = '2.0.2';
+     const class_version = '2.0.2';
+     const version = '2.0.2';
 
     /**
      * Define Plugin Constants
@@ -39,7 +39,6 @@ class Loading
         define('HELIX_PLUGIN_PATH', helix_default_setting()["helixPluginPath"]);
         define('HELIX_PLUGIN_URL', helix_default_setting()["helixPluginUrl"]);
         define('HELIX_PLUGIN_DIR_URL', helix_default_setting()["helixPluginDirUrl"]);
-        
     }
 
     /**
@@ -77,8 +76,7 @@ class Loading
         new Widgets();
         new Pages();
         new Posts();
-        new CategoriesAndDepencyPost(); //TODO: not working - check it 
+      //  new CategoriesAndDepencyPost(); //TODO: not working - check it 
         new WpInfo();
-   
     }
 }
