@@ -1,5 +1,6 @@
 <?php
-namespace Helix\Api\Wordpress;
+namespace Helix\Api\General;
+
 class WpInfo {
 
     /**
@@ -15,7 +16,7 @@ class WpInfo {
     * @since 2.0.0
     */
     public function add_endpoint() {
-        register_rest_route( 'wp/v2', 'wpmenu', [
+        register_rest_route( 'wp/v2', 'wpinfo', [
             'methods' => 'GET',
             'callback' => [ $this, 'get_general_info' ],
                     'permission_callback' => '__return_true'
