@@ -23,8 +23,8 @@ class Loading
      */
     public $name = 'HELIX ENGLISH';
 
-    const class_version = '2.0.2';
-    const version = '2.0.2';
+    // const class_version = '2.0.2';
+    // const version = '2.0.2';
 
     /**
      * Define Plugin Constants
@@ -42,9 +42,6 @@ class Loading
         
     }
 
-
-
-
     /**
      * @param int $payment_id The ID of the payment
      *
@@ -57,9 +54,7 @@ class Loading
         $this->registerMenu();
         $this->registerAssets();
         $this->wpDefaultsApi();
-//require_once "helper.php";  // TODO: look at the old version
     }
-
 
     public function databaseInstall()
     {
@@ -70,13 +65,12 @@ class Loading
     {
         new Menu();
     }
+
     public function registerAssets()
     {
         new Admin();
         new Frontend();
     }
-
-
 
     public function wpDefaultsApi()
     {
@@ -87,9 +81,4 @@ class Loading
         new GeneralData();
         new WpMenu();
     }
-
-
-
-
-
 }

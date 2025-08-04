@@ -1,26 +1,22 @@
 
 kaydet ve kelimeyi parcala butonu eklenecek 
 
-
-
 mesela alltaki linkte editore git butonu eklenebilir 
 http://english.test/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=106&_wpnonce=5098c96fd8
 
 
 
-https://github.com/pankajibn/php-crud-using-ajax/blob/master/js/script.js
-
+#v4 
+wp_nav_menu   eklenecek menuler wordpress den kontrol edilir olacak 
 https://github.com/stnc/ajax-handlebar-infinite-scroll
 
 
 
 
-https://github.com/allphptricks/laravel-10-crud/blob/master/app/Http/Controllers/ProductController.php
-
-https://github.com/stnc/go-crm-Public/blob/main/app/web/controller/UserController.go
 
 
-#bkx 
+
+#crud ve controller ornekleri ve ajax ornegi 
 
 https://github.com/easthero/codeigniter/tree/master/application/controllers
 
@@ -32,5 +28,11 @@ https://codewithawa.com/posts/ajax-crud-%5Bcreate-update-delete%5D-with-php-and-
 
 https://github.com/heryvandoro/simple-crud-php-oop-jquery-ajax/blob/master/controller/kategori.php
 
-
 https://www.nextgeducation.com/crud-using-object-oriented-concept-in-php
+
+https://github.com/pankajibn/php-crud-using-ajax/blob/master/js/script.js
+
+https://github.com/allphptricks/laravel-10-crud/blob/master/app/Http/Controllers/ProductController.php
+
+https://github.com/stnc/go-crm-Public/blob/main/app/web/controller/UserController.go  #sil bunu # sil //TODO: sil 
+

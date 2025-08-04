@@ -1,6 +1,6 @@
 <?php
 namespace Helix\Api\Wordpress;
-class WpMenu {
+class WpInfo {
 
     /**
     * Construct Function
