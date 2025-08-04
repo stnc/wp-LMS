@@ -187,9 +187,16 @@ class EditorExplodeH extends Controller
         $main_language_json = "";
         $button_html_json = "";
         foreach ($main_language_decode as $key => $value) {
+            $value = $this->engLib->modalVerbs($value);
+            $value = $this->engLib->conjunctions($value);
+            $value = $this->engLib->prepositions($value);
+            $value = $this->engLib->ComplexPrepositions($value);
+            $value = $this->engLib->prepositionsOfTime($value);
             $main_language_json .= $this->engLib->mainLanguageHtml($value);
             $button_html_json .= $this->engLib->helix_button_html_bootsrap($value, $key);
         }
+
+
 
         $translate_decode = json_decode($translate_data, false, 512, JSON_BIGINT_AS_STRING);
         $translate_language_json = " ";
