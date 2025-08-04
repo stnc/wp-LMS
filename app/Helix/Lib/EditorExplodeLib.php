@@ -115,7 +115,7 @@ class EditorExplodeLib
     public function ComplexPrepositions($value)
     {
         $arr = array(
-            "ahead of",
+            "ahead of",// https://www.merriam-webster.com/sentences/ahead%20of
             "inside of",
             "apart from",
             "instead of",

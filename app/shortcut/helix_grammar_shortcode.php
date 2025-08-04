@@ -13,7 +13,7 @@ function helix_conjunction_shortcode($atts)
     $a = shortcode_atts($default, $atts);
 
     return '
-    <h3 class="name">conjunction</h3>
+
     <p class="symbol"> <a style="color: black;" href="' . $a['value'] . '">' . $a['value'] . '</a></p>
 ';
 }
@@ -33,7 +33,7 @@ function helix_preposition_shortcode($atts)
     $a = shortcode_atts($default, $atts);
 
     return '
-    <h3 class="name">conjunction</h3>
+
     <p class="symbol"> <a style="color: black;" href="' . $a['value'] . '">' . $a['value'] . '</a></p>
 ';
 }
@@ -54,7 +54,7 @@ function helix_prepositionsOfTime_shortcode($atts)
     $a = shortcode_atts($default, $atts);
 
     return '
-    <h3 class="name">conjunction</h3>
+
     <p class="symbol"> <a style="color: black;" href="' . $a['value'] . '">' . $a['value'] . '</a></p>
 ';
 }
@@ -75,7 +75,7 @@ function helix_ComplexPreposition_shortcode($atts)
     $a = shortcode_atts($default, $atts);
 
     return '
-    <h3 class="name">conjunction</h3>
+   
     <p class="symbol"> <a style="color: black;" href="' . $a['value'] . '">' . $a['value'] . '</a></p>
 ';
 }
@@ -96,7 +96,7 @@ function helix_modalVerbs_shortcode($atts)
     $a = shortcode_atts($default, $atts);
 
     return '
-    <h3 class="name">conjunction</h3>
+
     <p class="symbol"> <a style="color: black;" href="' . $a['value'] . '">' . $a['value'] . '</a></p>
 ';
 }

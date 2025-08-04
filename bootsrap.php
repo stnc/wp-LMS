@@ -3,14 +3,18 @@
 Plugin Name:  Helix Learning
 Plugin URI:	https://github.com/helix/hlearn	
 Description: language learning system
-Version: 2.1.0
+Version: 2.1.4
 Author: helix team 
 Text Domain: helix_lng
 Domain Path: /languages/
 */
 
+
+$plugin_data_helix = get_plugin_data( __FILE__ );
+$HelixPluginVersion = $plugin_data_helix['Version'];
+
 require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer autoload
-require_once ('version-conf.php');
+require_once ('plugin-conf.php');
 require_once "app/shortcut/helix_grammar_shortcode.php";
 require_once "app/shortcut/helix_core_shortcode.php";
 

@@ -29,6 +29,10 @@
             <a href="/wp-admin/admin.php?page=editorH&trigger=create"><i
                     class="fas fa-file-alt"></i><?php esc_html_e('Add', 'helix-lng') ?></a>
         </li>
+        <li>
+            <a href="/wp-admin/admin.php?page=editorH&trigger=edit&id=129"><i
+                    class="fas fa-file-alt"></i><?php esc_html_e('Test', 'helix-lng') ?></a>
+        </li>
 
 
 
