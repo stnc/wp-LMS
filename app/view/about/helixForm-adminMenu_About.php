@@ -16,6 +16,19 @@ function helix_about_page()
             </div>
 <pre>
 
+
+================================================================================
+        v2.1.4 Important changes and bug fixes in the release 
+================================================================================
+- Bug fix: arayuz hatalari ve helix\app\controller\EditorExplodeH.php buradaki edit hatasi duzenlendi 
+- TODO : helix\app\controller\EditorExplodeH.php burada kritik hata tespit edildi kelime parcalanirken "bosluklar ile parcalaniyor" bu yuzden
+          mesela kelime icinde  "shall not" geciyorsa bu tur modal Verbs leri bilemiyoruz , bu yuzden bir sonraki versiyonda cok fazla degisiklik olacak 
+
+================================================================================
+        v2.1.3 Important changes and bug fixes in the release 
+================================================================================
+- Bug fix: arayuz hatalari duzenlendi 
+
 ================================================================================
         v2.1.2 Important changes and bug fixes in the release 
 ================================================================================
