@@ -4,7 +4,7 @@
 namespace Helix\Loader;
 
 use Helix\Loader\Menu;
-use Helix\Loader\I18n;
+
 use Helix\Loader\Defaults;
 use Helix\Loader\Assets\Admin;
 use Helix\Loader\Assets\Frontend;
@@ -51,10 +51,11 @@ class Loading
     {
         $this->plugin_constants();
         new Defaults();
-        new I18n();
+ // new I18n();
         $this->registerMenu();
         $this->registerAssets();
         $this->wpDefaultsApi();
+       
     }
 
     public function databaseInstall()

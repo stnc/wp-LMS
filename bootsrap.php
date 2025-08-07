@@ -18,17 +18,21 @@ require_once ('plugin-conf.php');
 require_once "app/shortcut/helix_grammar_shortcode.php";
 require_once "app/shortcut/helix_core_shortcode.php";
 
-// use Helix\Loader\Menu as LoadMenu; // new LoadMenu();
+
+
+
+use Helix\Loader\I18n;
 use Helix\Loader\Loading;
 new Loading();
 include ('app/view/homepage/homepage.php');
 require_once "app/controller/router.php";
-require_once "app/view/DattaTaable/db_list.php";
-require_once "app/view/about/helixForm-adminMenu_About.php";
+new I18n();
+// require_once "app/view/about/helixForm-adminMenu_About.php";
 
 
 //TODO: database install 
 /*
+// use Helix\Loader\Menu as LoadMenu; // new LoadMenu();
 use Helix\Api\Wordpress\WpMenu;
 use Helix\Api\General\GeneralData;
 use Helix\Api\Wordpress\Widget\Widgets;

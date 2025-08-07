@@ -610,7 +610,6 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 
 
-
 /** ************************ REGISTER THE TEST PAGE ****************************
  *******************************************************************************
  * Now we just need to define an admin page. For this example, we'll add a top-level
@@ -639,21 +638,10 @@ function helix_DataTABLE_page()
 	$testListTable->prepare_items();
 
 	?>
-	<div class="wrap">
 
-		<a style=" background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;"
-			href="/wp-admin/admin.php?page=helix_empty_building_list"><?php esc_html_e('other buton ', 'helix-lng') ?></a>
 
-		<div id="icon-users" class="icon32"><br /></div>
+
+
 		<h2> <?php esc_html_e('Word list', 'helix-lng') ?></h2>
 
 		<div
@@ -673,6 +661,8 @@ function helix_DataTABLE_page()
 			$testListTable->display() ?>
 		</form>
 
-	</div>
+
 	<?php
+
+
 }

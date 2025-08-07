@@ -18,7 +18,7 @@ class I18n
 
     public function __construct()
     {
-        add_action('plugins_loaded', array($this, 'loadLanguage'));
+        add_action('init', array($this, 'loadLanguage'));
     }
 
 
@@ -28,7 +28,7 @@ class I18n
         // echo dirname( plugin_basename( __FILE__ ) ) . '/../../languages';
         // die;
         // Retrieve the directory for the internationalization files
-        load_plugin_textdomain('helix-lng', false, dirname(plugin_basename(__FILE__)) . '/../../languages');
+        load_plugin_textdomain('helix-lng', false, HELIX_PLUGIN_DIR_URL .  'languages');
     }
 
 }
