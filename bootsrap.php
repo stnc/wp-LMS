@@ -10,6 +10,10 @@ Domain Path: /languages/
 */
 
 
+
+
+
+
 $plugin_data_helix = get_plugin_data( __FILE__ );
 $HelixPluginVersion = $plugin_data_helix['Version'];
 
@@ -30,36 +34,48 @@ require_once "app/controller/router.php";
 // require_once "app/Helix/Loader/DatabaseInstall.php";
 // require_once "install.php";
 new I18n();
-// require_once "app/view/about/helixForm-adminMenu_About.php";
-
-    // new DatabaseInstall();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//TODO: database install 
 /*
-// use Helix\Loader\Menu as LoadMenu; // new LoadMenu();
-use Helix\Api\Wordpress\WpMenu;
-use Helix\Api\General\GeneralData;
-use Helix\Api\Wordpress\Widget\Widgets;
-use Helix\Api\Wordpress\Posts\Posts;
-new Widgets();
-new Posts();
-new GeneralData();
-new WpMenu();
+
+
+$text = "Solid understanding of software, hardware, networks, and security fundamentals";
+$search = "of software";
+
+// Aranan ifadenin başlangıç konumunu bul
+echo $position = strpos($text, $search);
+
+if ($position !== false) {
+    // İfadenin uzunluğunu al
+    $length = strlen($search);
+
+    // Metinden ifadeyi çıkar
+    $found = substr($text, $position, $length);
+
+    echo "Bulunan ifade: '$found'";
+} else {
+    echo "'$search' ifadesi metinde bulunamadı.";
+}
+
+
+$text = "Solid understanding of software, hardware, networks, and security fundamentals";
+
+if (preg_match('/of software/i', $text, $matches)) {
+    echo "Bulunan ifade: '" . $matches[0] . "'";
+} else {
+    echo "'of software' ifadesi bulunamadı.";
+}
+
+
+$text = "Solid understanding of software, hardware, networks, and security fundamentals";
+$search = "of software";
+$replace = "*of software*";
+
+// Değiştir
+$updatedText = str_replace($search, $replace, $text);
+
+echo $updatedText;
+
+
+
 */

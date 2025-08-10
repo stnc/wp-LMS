@@ -109,7 +109,3 @@ class DatabaseInstall
         dbDelta($sql);
     }
 }
-
-
-
-// register_activation_hook(__FILE__, 'Helix_activate');
