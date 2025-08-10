@@ -23,11 +23,32 @@ require_once "app/shortcut/helix_core_shortcode.php";
 
 use Helix\Loader\I18n;
 use Helix\Loader\Loading;
+
 new Loading();
 include ('app/view/homepage/homepage.php');
 require_once "app/controller/router.php";
+// require_once "app/Helix/Loader/DatabaseInstall.php";
+// require_once "install.php";
 new I18n();
 // require_once "app/view/about/helixForm-adminMenu_About.php";
+
+    // new DatabaseInstall();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //TODO: database install 

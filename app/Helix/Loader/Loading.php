@@ -4,10 +4,12 @@
 namespace Helix\Loader;
 
 use Helix\Loader\Menu;
+use Helix\Loader\DatabaseInstall;
 
 use Helix\Loader\Defaults;
 use Helix\Loader\Assets\Admin;
 use Helix\Loader\Assets\Frontend;
+
 
 
 // use Helix\Api\General\CategoriesAndDepencyPost;
@@ -51,15 +53,23 @@ class Loading
     {
         $this->plugin_constants();
         new Defaults();
- // new I18n();
+        // new I18n();
         $this->registerMenu();
         $this->registerAssets();
         $this->wpDefaultsApi();
-       
+        $this->databaseInstall();
+
     }
 
     public function databaseInstall()
     {
+
+        // require_once ('DatabaseInstall.php');
+    new DatabaseInstall();
+//     $helix_plugin = new DatabaseInstall();
+
+// // Register activation hook with static method
+
 
     }
 

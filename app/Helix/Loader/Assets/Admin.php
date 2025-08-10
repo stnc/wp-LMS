@@ -11,10 +11,13 @@ class Admin
     {
 
         global $helix_fullpage_routes;
-        $findGetPage = isset($_GET["page"]) ? $_GET["page"] :"empty";
-        if (in_array( $findGetPage, $helix_fullpage_routes)){
-            $this->helix_admin_scritps();
+        if (isset($_GET["page"])) {
+            $findGetPage = isset($_GET["page"]) ? $_GET["page"] : "empty";
+            if (in_array($findGetPage, $helix_fullpage_routes)) {
+                $this->helix_admin_scritps();            }
         }
+
+
     }
 
 
