@@ -33,20 +33,20 @@
 
         <li>
             <a href="/wp-admin/admin.php?page=editorH&trigger=create"><i
-                    class="fas fa-file-alt"></i><?php esc_html_e('Add', 'helix-lng') ?></a>
+                    class="fas fa-file-alt"></i><?php esc_html_e('New Word Add', 'helix-lng') ?></a>
         </li>
 
 
         <li>
             <a href="/wp-admin/admin.php?page=editorH&trigger=edit&id=129"><i
-                    class="fas fa-file-alt"></i><?php esc_html_e('Test', 'helix-lng') ?></a>
+                    class="fas fa-file-alt"></i><?php esc_html_e('Test sayfam', 'helix-lng') ?></a>
         </li>
 
 
 
         <li>
             <a href="#pagesmenu" data-bs-toggle="collapse" aria-expanded="false"
-                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Example</a>
+                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Accordion example</a>
             <ul class="collapse list-unstyled" id="pagesmenu">
                 <li>
                     <a href="blank.html"><i class="fas fa-file"></i>Blank page</a>

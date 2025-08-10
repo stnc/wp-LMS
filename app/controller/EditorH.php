@@ -87,7 +87,13 @@ class EditorH extends Controller
         $table_tense_list = $wpdb->prefix . 'helix_tense';
         $sql_tense_List = 'SELECT * FROM ' . $table_tense_list . '  WHERE status=1';
         $vocable_tense_list = $wpdb->get_results($sql_tense_List);
-
+        $level=0;
+        $level_cat_id=0;
+        $tense_id=0;
+        $vocable_level=0;
+        $main_language="";
+        $translate="";
+        $source ="";
         require(HELIX_PLUGIN_PATH . 'app/view/editorH/editorH-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
