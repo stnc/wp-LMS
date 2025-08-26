@@ -3,6 +3,7 @@
 // use Nette\Utils\Arrays;
 use Nette\Utils\Strings;
 use Helix\Lib\EditorExplodeLib;
+use Helix\Lib\EditorExplodeLib2;
 
 
 class EditorExplodeH extends Controller
@@ -10,6 +11,7 @@ class EditorExplodeH extends Controller
 
 
     private $engLib;
+    private $engLib2;
     private $helixFormTableNameMain;
 
     public function __construct()
@@ -24,6 +26,7 @@ class EditorExplodeH extends Controller
 
 
         $this->engLib = new EditorExplodeLib();
+        $this->engLib2 = new EditorExplodeLib2();
 
         if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'create')) {
             $this->create();
@@ -89,7 +92,7 @@ class EditorExplodeH extends Controller
             $value = $this->engLib->prepositions($value);
             $value = $this->engLib->ComplexPrepositions($value);
             $value = $this->engLib->prepositionsOfTime($value);
-            $main_language_json .= $this->engLib->mainLanguageHtml($value);
+            $main_language_json .= $this->engLib2->mainLanguageHtml($value);
         }
 
         $piecesTR = Strings::split($translate, '~ \s*~');
@@ -103,7 +106,7 @@ class EditorExplodeH extends Controller
             foreach ($translate_decode as $key => $value1) {
                 $value1 = Strings::trim($value1);
                 $value1 = Strings::lower($value1);
-                $translate_language_json .= "<td>" . $this->engLib->htmlTranslate($value1) . "</td>";
+                $translate_language_json .= "<td>" . $this->engLib2->htmlTranslate($value1) . "</td>";
             }
 
             $translate_language_json .= "</tr>";
@@ -192,8 +195,8 @@ class EditorExplodeH extends Controller
             $value = $this->engLib->prepositions($value);
             $value = $this->engLib->ComplexPrepositions($value);
             $value = $this->engLib->prepositionsOfTime($value);
-            $main_language_json .= $this->engLib->mainLanguageHtml($value);
-            $button_html_json .= $this->engLib->helix_button_html_bootsrap($value, $key);
+            $main_language_json .= $this->engLib2->mainLanguageHtml($value);
+            $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
         }
 
 
@@ -205,7 +208,7 @@ class EditorExplodeH extends Controller
         foreach ($groups as $index => $translate_decode) {
             $translate_language_json .= "<tr>";
             foreach ($translate_decode as $key => $value) {
-                $translate_language_json .= "<td>" . $this->engLib->htmlTranslate($value) . "</td>";
+                $translate_language_json .= "<td>" . $this->engLib2->htmlTranslate($value) . "</td>";
             }
             $translate_language_json .= "</tr>";
         }

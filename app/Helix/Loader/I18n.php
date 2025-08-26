@@ -18,7 +18,8 @@ class I18n
 
     public function __construct()
     {
-        add_action('init', array($this, 'loadLanguage'));
+        add_action('plugins_loaded', array($this, 'loadLanguage'));
+        //https://daext.com/blog/how-to-make-a-wordpress-plugin-translatable/
     }
 
 

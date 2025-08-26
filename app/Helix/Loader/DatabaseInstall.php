@@ -83,7 +83,7 @@ class DatabaseInstall
 
         dbDelta($sql);
 
-        $table_name = $wpdb->prefix . 'helix_tense2';
+        $table_name = $wpdb->prefix . 'helix_tense';
 
 
         $sql = "CREATE TABLE $table_name (
@@ -107,5 +107,20 @@ class DatabaseInstall
                         ) $charset_collate;";
 
         dbDelta($sql);
+
+
+        $table_name = $wpdb->prefix . 'helix_grammer';
+        $sql = "CREATE TABLE $table_name (
+                            id INT(11) NOT NULL AUTO_INCREMENT,
+                            word VARCHAR(255) NOT NULL,
+                            encrypt_word LONGTEXT NULL DEFAULT NULL,
+                            type CHAR(50) NOT NULL,
+                            status TINYINT(1) NULL DEFAULT '1',
+                            PRIMARY KEY (id)
+                        ) $charset_collate;";
+
+        dbDelta($sql);
+
+
     }
 }

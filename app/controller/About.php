@@ -1,13 +1,46 @@
 <?php
 
 
+
 function helix_about_page()
 {
+
+
+        // $arr = array(
+        //         "after",
+        //         "before",
+        //         "since",
+        //         "than",
+        //         "that",
+        //         "though",
+        //         "unless",
+        //         "when",
+        //         "until",
+        //         "where",
+        //         "while",
+        //         "yet",
+        //         "both",
+        //         "either",
+        //         "neither",
+        //     );
+        //     global $wpdb;
+        // foreach ($arr as $key => $value) {
+        //         $wpdb->insert("wp_helix_grammer", [
+        //                 'word' => $value,
+        //                 'type' => "conjunctions",
+        //                 'status' => 1,
+        //             ]);
+        // }
+
+
+
 
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/wrapper01-XHTML.php');
 require(HELIX_PLUGIN_PATH . 'app/view/masterPage/sidebar02-XHTML.php');
 require(HELIX_PLUGIN_PATH . 'app/view/masterPage/body03-XHTML.php');
 require(HELIX_PLUGIN_PATH . 'app/view/masterPage/nav04-XHTML.php');
+
+
         //  $to = get_option('admin_email');
         // $options = get_option( 'helix_wp__option' ); 
         // echo "<pre>";

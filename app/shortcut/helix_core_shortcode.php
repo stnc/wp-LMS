@@ -1,6 +1,6 @@
 <?php
 
-use Helix\Lib\EditorExplodeLib;
+use Helix\Lib\EditorExplodeLib2;
 
 
 add_shortcode("helix_wordTL_sc", "helix_word_translate_shortcode");
@@ -15,7 +15,7 @@ function helix_word_translate_shortcode($attr)
     // ob_start(); 
     global $wpdb;
 
-    $lib = new EditorExplodeLib();
+    $lib = new EditorExplodeLib2();
     $helixForm_tableNameMain = $wpdb->prefix . 'helix_words';
 
     $attr = shortcode_atts(
