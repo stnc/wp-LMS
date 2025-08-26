@@ -19,7 +19,7 @@ class EditorExplodeLib2
     </div>';
     }
 
-    public function helix_button_html_bootsrap($value, $no)
+    public function     helix_button_html_bootsrap($value, $no)
     {
         $no++;
     
