@@ -84,8 +84,6 @@ class DatabaseInstall
         dbDelta($sql);
 
         $table_name = $wpdb->prefix . 'helix_tense';
-
-
         $sql = "CREATE TABLE $table_name (
                         tense_id INT(11) NOT NULL AUTO_INCREMENT,
                         name_eng VARCHAR(255) NOT NULL,
@@ -114,6 +112,7 @@ class DatabaseInstall
                             id INT(11) NOT NULL AUTO_INCREMENT,
                             word VARCHAR(255) NOT NULL,
                             encrypt_word LONGTEXT NULL DEFAULT NULL,
+                            link TEXT NULL DEFAULT NULL,
                             type CHAR(50) NOT NULL,
                             status TINYINT(1) NULL DEFAULT '1',
                             PRIMARY KEY (id)
