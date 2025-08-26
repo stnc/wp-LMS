@@ -3,17 +3,8 @@ namespace Helix\Lib;
 class EditorExplodeLib
 {
 
-    
- private function helix_is_check_shortcode($word)
-{
-    $firstLetter = substr($word, 0, 1); // İlk karakter
-    $lastLetter = substr($word, -1);   // Son karakter
-    return $firstLetter . $lastLetter;
-}
 
-
-
-  public  function modalVerbs($value)
+    public  function modalVerbs($value)
     {
         $arr = array(
             "can",
@@ -50,6 +41,71 @@ class EditorExplodeLib
         }
     }
 
+
+    public function modalVerbs2($value)
+    {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'helix_grammer';
+        $results = $wpdb->get_results("SELECT * FROM $table_name WHERE type= 'modal verbs' ");
+        $key = "helix";
+        foreach ($results as $row) {
+
+            $a = $this->search($value, $row->word);
+            // print_r($a);
+            if ($a != "notfound") {
+                echo "<br>";
+                echo $text= $this->replace($a, $value, $row->id, "modalVerbs_sc");
+         
+                echo $this->simpleXOREncrypt( $text, $key);
+        
+                echo "<br>";
+            }
+        }
+
+    }
+
+
+
+    public function search($text, $search)
+    {
+
+
+        // $text = "Solid can conjunctions understanding of software, except, where, and on account of fundamentals during ";
+        // $search = "where";
+
+
+        if (preg_match('/' . $search . '/i', $text, $matches)) {
+            echo "<br>";
+            echo "Bulunan ifade: '" . $matches[0] . "'";
+
+            return $matches[0];
+        } else {
+            echo "<br>";
+            echo "'of software' ifadesi bulunamadı.";
+            return "notfound";
+        }
+
+    }
+
+    public function replace($text, $search, $id , $type)
+    {
+        $replace = "[helix_".$type ." id='" . $id . "  value='" . $search . "  ']";
+
+        // Değiştir
+        $updatedText = str_replace($search, $replace, $text);
+        echo "<br>";
+        echo $updatedText;
+        return  $updatedText;
+    }
+
+    public function simpleXOREncrypt($text, $key) {
+        $output = '';
+        for ($i = 0; $i < strlen($text); $i++) {
+             $output .= $text[$i] ^ $key[$i % strlen($key)];
+        }
+        return base64_encode($output);
+    }
 
     public function prepositions($value)
     {
@@ -167,7 +223,7 @@ class EditorExplodeLib
         }
     }
 
-    public  function conjunctions($value)
+    public function conjunctions($value)
     {
         $arr = array(
             "after",

@@ -3,6 +3,14 @@ namespace Helix\Lib;
 class EditorExplodeLib2
 {
 
+    private function helix_is_check_shortcode($word)
+    {
+        $firstLetter = substr($word, 0, 1); // İlk karakter
+        $lastLetter = substr($word, -1);   // Son karakter
+        return $firstLetter . $lastLetter;
+    }
+
+    
     public function mainLanguageHtml($value)      
     {
         return '<div class="mb-3 col-md-3">
