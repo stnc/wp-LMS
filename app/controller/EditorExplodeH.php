@@ -19,7 +19,7 @@ class EditorExplodeH extends Controller
     {
         global $wpdb;
         $this->helixFormTableNameMain = $wpdb->prefix . 'helix_words';
-      
+
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/wrapper01-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/sidebar02-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/body03-XHTML.php');
@@ -188,22 +188,26 @@ class EditorExplodeH extends Controller
         $comment = $data->comment;
 
 
-        
-   
-                // echo $value = $this->engLib->modalVerbs2($value);
-                echo $value = $this->engLibAlternative->kisaltmalar($value);
-            
-
-            // $value = $this->engLib->conjunctions($value);
-            // $value = $this->engLib->prepositions($value);
-            // $value = $this->engLib->ComplexPrepositions($value);
-            // $value = $this->engLib->prepositionsOfTime($value);
-            // $main_language_json .= $this->engLib2->mainLanguageHtml($value);
-            // $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
 
 
 
-/////
+        $value = $this->engLibAlternative->kisaltmalar($value);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+
+        /// burada veritabani kayit islemi olacak // TODO: save it 
+
+        $this->engLib->modalVerbs2($value);
+
+
+        // $value = $this->engLib->conjunctions($value);
+        // $value = $this->engLib->prepositions($value);
+        // $value = $this->engLib->ComplexPrepositions($value);
+        // $value = $this->engLib->prepositionsOfTime($value);
+        // $main_language_json .= $this->engLib2->mainLanguageHtml($value);
+        // $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
+
+
+
+        /////
 /*
 $main_language_decode = json_decode($main_language_data, false, 512, JSON_BIGINT_AS_STRING);
 $main_language_json = "";
@@ -232,7 +236,7 @@ foreach ($groups as $index => $translate_decode) {
     $translate_language_json .= "</tr>";
 }
 */
-        
+
 
         require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
