@@ -4,6 +4,7 @@
 use Nette\Utils\Strings;
 use Helix\Lib\EditorExplodeLib;
 use Helix\Lib\EditorExplodeLib2;
+use Helix\Lib\EditorExplodeAlternativeLib;
 
 
 class EditorExplodeH extends Controller
@@ -27,6 +28,7 @@ class EditorExplodeH extends Controller
 
         $this->engLib = new EditorExplodeLib();
         $this->engLib2 = new EditorExplodeLib2();
+        $this->engLibAlternative = new EditorExplodeAlternativeLib();
 
         if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'create')) {
             $this->create();
@@ -189,7 +191,7 @@ class EditorExplodeH extends Controller
         
    
                 // echo $value = $this->engLib->modalVerbs2($value);
-                echo $value = $this->engLib->kisaltmalar($value);
+                echo $value = $this->engLibAlternative->kisaltmalar($value);
             
 
             // $value = $this->engLib->conjunctions($value);
