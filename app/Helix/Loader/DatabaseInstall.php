@@ -112,6 +112,8 @@ class DatabaseInstall
                             id INT(11) NOT NULL AUTO_INCREMENT,
                             word VARCHAR(255) NOT NULL,
                             encrypt_word LONGTEXT NULL DEFAULT NULL,
+                            alternatives LONGTEXT NULL DEFAULT NULL,
+                            comment LONGTEXT NULL DEFAULT NULL,
                             link TEXT NULL DEFAULT NULL,
                             type CHAR(50) NOT NULL,
                             status TINYINT(1) NULL DEFAULT '1',

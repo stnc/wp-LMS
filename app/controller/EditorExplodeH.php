@@ -179,40 +179,58 @@ class EditorExplodeH extends Controller
         $editId = sanitize_text_field($_GET['id']);
         $data = $wpdb->get_row($wpdb->prepare("SELECT *  FROM " . $helixFormTableNameMain . "  WHERE id = %d", $editId));
         $id = $data->id;
-        $main_language = $data->main_language;
+        $value = $data->main_language;
         $translate = $data->translate;
         $main_language_data = $data->main_language_json;
         $translate_data = $data->translate_json;
         $comment = $data->comment;
 
 
-        $main_language_decode = json_decode($main_language_data, false, 512, JSON_BIGINT_AS_STRING);
-        $main_language_json = "";
-        $button_html_json = "";
-        foreach ($main_language_decode as $key => $value) {
-            $value = $this->engLib->modalVerbs($value);
-            $value = $this->engLib->conjunctions($value);
-            $value = $this->engLib->prepositions($value);
-            $value = $this->engLib->ComplexPrepositions($value);
-            $value = $this->engLib->prepositionsOfTime($value);
-            $main_language_json .= $this->engLib2->mainLanguageHtml($value);
-            $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
-        }
+        
+   
+                // echo $value = $this->engLib->modalVerbs2($value);
+                echo $value = $this->engLib->kisaltmalar($value);
+            
+
+            // $value = $this->engLib->conjunctions($value);
+            // $value = $this->engLib->prepositions($value);
+            // $value = $this->engLib->ComplexPrepositions($value);
+            // $value = $this->engLib->prepositionsOfTime($value);
+            // $main_language_json .= $this->engLib2->mainLanguageHtml($value);
+            // $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
 
 
 
-        $translate_decode = json_decode($translate_data, false, 512, JSON_BIGINT_AS_STRING);
-        $translate_language_json = " ";
+/////
+/*
+$main_language_decode = json_decode($main_language_data, false, 512, JSON_BIGINT_AS_STRING);
+$main_language_json = "";
+$button_html_json = "";
+foreach ($main_language_decode as $key => $value) {
+    $value = $this->engLib->modalVerbs($value);
+    $value = $this->engLib->conjunctions($value);
+    $value = $this->engLib->prepositions($value);
+    $value = $this->engLib->ComplexPrepositions($value);
+    $value = $this->engLib->prepositionsOfTime($value);
+    $main_language_json .= $this->engLib2->mainLanguageHtml($value);
+    $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
+}
 
-        $groups = array_chunk($translate_decode, 4);
-        foreach ($groups as $index => $translate_decode) {
-            $translate_language_json .= "<tr>";
-            foreach ($translate_decode as $key => $value) {
-                $translate_language_json .= "<td>" . $this->engLib2->htmlTranslate($value) . "</td>";
-            }
-            $translate_language_json .= "</tr>";
-        }
 
+
+$translate_decode = json_decode($translate_data, false, 512, JSON_BIGINT_AS_STRING);
+$translate_language_json = " ";
+
+$groups = array_chunk($translate_decode, 4);
+foreach ($groups as $index => $translate_decode) {
+    $translate_language_json .= "<tr>";
+    foreach ($translate_decode as $key => $value) {
+        $translate_language_json .= "<td>" . $this->engLib2->htmlTranslate($value) . "</td>";
+    }
+    $translate_language_json .= "</tr>";
+}
+*/
+        
 
         require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');

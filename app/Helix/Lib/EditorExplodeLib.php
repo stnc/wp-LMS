@@ -4,7 +4,163 @@ class EditorExplodeLib
 {
 
 
-    public  function modalVerbs($value)
+    public function kisaltmalar($value)
+    {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'helix_grammer';
+        $results = $wpdb->get_results("SELECT word,alternatives FROM $table_name WHERE type= 'modal verbs' and status=1 and alternatives<>'' ", "ARRAY_A");
+    
+        // print_r($results);
+
+        //$keywords = array_column($results, 'word','alternatives');
+        echo "<pre>1";
+        //  print_r($keywords);
+
+        echo "<br>1";
+        echo $value;
+        $found = [];
+
+        foreach ($results as $alternatives) {
+    
+
+            echo "<br>";
+echo ($alternatives["word"]);
+echo "<br>";
+// echo ($alternatives["alternatives"]);
+$exp = explode(",", $alternatives["alternatives"]);
+// echo "<br>";
+//  print_r($exp);
+
+foreach ($exp as $data) {
+    echo "<br>";
+    echo $data;
+    echo "<br>";
+
+            // \b: kelime sınırı, i: büyük/küçük harf duyarsız
+            if (preg_match("/\b" . preg_quote( $data, '/') . "\b/i", $value)) {
+                $found[] = $value;
+                $value = $this->replace_regular_with_Color($value, $data,$alternatives["word"]);
+                // $value = $this->replaceRegular($value, $data,$alternatives["word"]);
+            }
+}
+
+
+echo  $value ;
+
+        }
+
+
+
+        if (!empty($found)) {
+            echo "<br>";
+            echo "Tam eşleşen kelimeler: " . implode(", ", $found);
+        } else {
+            echo "<br>";
+            echo "Hiçbir tam kelime eşleşmesi bulunamadı.";
+        }
+
+
+        echo "<br>0";
+
+
+    }
+
+
+
+    public function modalVerbs2($value)
+    {
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'helix_grammer';
+        $results = $wpdb->get_results("SELECT * FROM $table_name WHERE type= 'modal verbs' and status=1 ", "ARRAY_A");
+    
+        // print_r($results);
+
+        $keywords = array_column($results, 'word');
+
+        // print_r($keywords);
+
+        echo "<br>1";
+        echo $value;
+        $found = [];
+
+        foreach ($keywords as $word) {
+            // \b: kelime sınırı, i: büyük/küçük harf duyarsız
+            if (preg_match("/\b" . preg_quote($word, '/') . "\b/i", $value)) {
+                $found[] = $word;
+                $value = $this->replace($value, $word, 1, "d");
+            }
+        }
+
+        if (!empty($found)) {
+            echo "Tam eşleşen kelimeler: " . implode(", ", $found);
+        } else {
+            echo "Hiçbir tam kelime eşleşmesi bulunamadı.";
+        }
+
+
+        echo "<br>0";
+
+
+    }
+
+
+    public function replaceRegular($text, $search,$replace)
+    {
+        // $replace = '<span style="color:red">'.$replace.'</span>';
+ 
+
+        $updatedText = str_replace($search, $replace, $text);
+
+
+
+        echo $updatedText;
+        echo "<br>";
+        return $updatedText;
+    }
+
+    public function replace_regular_with_Color($text, $search,$replace)
+    {
+        $replace = '<span style="color:red">'.$replace.'</span>';
+ 
+
+        $updatedText = str_replace($search, $replace, $text);
+
+
+
+        echo $updatedText;
+        echo "<br>";
+        return $updatedText;
+    }
+
+
+    public function replace($text, $search, $id, $type)
+    {
+        $replace = "[helix_" . $type . " id='" . $id . "  value='" . $search . "']";
+        $key = "helix";
+       // $replace = $this->simpleXOREncrypt($replace, $key);
+        // Değiştir
+        $updatedText = str_replace($search, $replace, $text);
+
+
+
+        echo $updatedText;
+        echo "<br>";
+        return $updatedText;
+    }
+
+    public function simpleXOREncrypt($text, $key)
+    {
+        $output = '';
+        for ($i = 0; $i < strlen($text); $i++) {
+            $output .= $text[$i] ^ $key[$i % strlen($key)];
+        }
+        return base64_encode($output);
+    }
+
+
+    public function modalVerbs($value)
     {
         $arr = array(
             "can",
@@ -41,71 +197,6 @@ class EditorExplodeLib
         }
     }
 
-
-    public function modalVerbs2($value)
-    {
-
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'helix_grammer';
-        $results = $wpdb->get_results("SELECT * FROM $table_name WHERE type= 'modal verbs' ");
-        $key = "helix";
-        foreach ($results as $row) {
-
-            $a = $this->search($value, $row->word);
-            // print_r($a);
-            if ($a != "notfound") {
-                echo "<br>";
-                echo $text= $this->replace($a, $value, $row->id, "modalVerbs_sc");
-         
-                echo $this->simpleXOREncrypt( $text, $key);
-        
-                echo "<br>";
-            }
-        }
-
-    }
-
-
-
-    public function search($text, $search)
-    {
-
-
-        // $text = "Solid can conjunctions understanding of software, except, where, and on account of fundamentals during ";
-        // $search = "where";
-
-
-        if (preg_match('/' . $search . '/i', $text, $matches)) {
-            echo "<br>";
-            echo "Bulunan ifade: '" . $matches[0] . "'";
-
-            return $matches[0];
-        } else {
-            echo "<br>";
-            echo "'of software' ifadesi bulunamadı.";
-            return "notfound";
-        }
-
-    }
-
-    public function replace($text, $search, $id , $type)
-    {
-        $replace = "[helix_".$type ." id='" . $id . "  value='" . $search . "  ']";
-
-        // Değiştir
-        $updatedText = str_replace($search, $replace, $text);
-        echo "<br>";
-        echo $updatedText;
-        return  $updatedText;
-    }
-
-    public function simpleXOREncrypt($text, $key) {
-        $output = '';
-        for ($i = 0; $i < strlen($text); $i++) {
-             $output .= $text[$i] ^ $key[$i % strlen($key)];
-        }
-        return base64_encode($output);
-    }
 
     public function prepositions($value)
     {
