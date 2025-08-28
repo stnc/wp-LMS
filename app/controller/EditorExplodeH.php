@@ -193,7 +193,7 @@ class EditorExplodeH extends Controller
 
         $value = $this->engLibAlternative->kisaltmalar($value);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
 
-        /// burada veritabani kayit islemi olacak // TODO: save it 
+        /// this  line, database save process  // TODO: save it 
 
         $this->engLib->modalVerbs2($value);
 
