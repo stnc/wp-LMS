@@ -12,11 +12,14 @@ class EditorExplodeAlternativeLib
         // print_r($results);
 
         //$keywords = array_column($results, 'word','alternatives');
-        echo "<pre>1";
+        echo "start<pre>";
         //  print_r($keywords);
 
-        echo "<br>1";
-        echo $value;
+        echo "13333<br>";
+    
+        echo htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+        echo "<br>end<br>";
+        echo "<br>";
         $found = [];
 
         foreach ($results as $alternatives) {

@@ -62,14 +62,13 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
 
                                 <?php endforeach ?>
                             <?php } else { ?>
-                                <?php foreach ($categoriesSpeakLevelList as $categories): ?>
+                                <?php foreach ($categoriesSpeakLevelList as $key => $categories): ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" <?php if ($categories->level_id == $level)
-                                            echo 'checked'; ?> name="speakLevelList[]"
-                                            for="speakLevelList<?php echo $categories->id ?>"
+                                        <input class="form-check-input" type="checkbox" name="speakLevelList[]"
+                                            id="speakLevelList<?php echo $key ?>"
                                             value="<?php echo $categories->level_id ?>">
                                         <label class="form-check-label"
-                                            for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
+                                            for="speakLevelList<?php echo $key ?>"><?php echo $categories->name ?></label>
                                     </div>
                                 <?php endforeach ?>
 
