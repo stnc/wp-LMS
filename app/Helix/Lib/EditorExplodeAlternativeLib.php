@@ -4,22 +4,30 @@ class EditorExplodeAlternativeLib
 {
     public function kisaltmalar($value)
     {
-
+/*
+ Bu "örnek" bir shan't, shall 'not, metin ve içinde 'tırnak' var. shall ' not The shall 'not Ukrainian will'not , could Att shall 'not acks That could' not Are will not Forcing will' not Russia to will Ration Its Fuel shan't be shall ' not 
+ */
         global $wpdb;
         $table_name = $wpdb->prefix . 'helix_grammer';
-        $results = $wpdb->get_results("SELECT word,alternatives FROM $table_name WHERE type= 'modal verbs' and status=1 and alternatives<>'' ", "ARRAY_A");
 
+        $sql = "SELECT word,alternatives FROM $table_name WHERE type= 'modal verbs' and status=1 and alternatives<>''";
+$results = $wpdb->get_results($sql, "ARRAY_A");
+
+// $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM `".$wpdb->prefix."tablename` WHERE `foo` = %s ORDER BY `time` DESC LIMIT 50", $foo));
+
+        $value = str_replace("’", "'", $value);
+        $value = stripcslashes($value);
         // print_r($results);
 
         //$keywords = array_column($results, 'word','alternatives');
-        echo "start<pre>";
+        // echo "start<pre>";
         //  print_r($keywords);
 
-        echo "13333<br>";
+        // echo "13333<br>";
     
-        echo htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-        echo "<br>end<br>";
-        echo "<br>";
+        // echo htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+        // echo "<br>end<br>";
+        // echo "<br>";
         $found = [];
 
         foreach ($results as $alternatives) {
@@ -29,7 +37,9 @@ class EditorExplodeAlternativeLib
             echo ($alternatives["word"]);
             echo "<br>";
             // echo ($alternatives["alternatives"]);
-            $exp = explode(",", $alternatives["alternatives"]);
+            $alternative_t = trim($alternatives["alternatives"]);
+            $exp = explode(",",$alternative_t );
+           
             // echo "<br>";
 //  print_r($exp);
 

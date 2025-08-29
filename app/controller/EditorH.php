@@ -162,9 +162,9 @@ class EditorH extends Controller
         $level_cat_id = $data->level_cat_id;
         $tense_id = $data->tense_id;
         $vocable_level = $data->vocable_level_id;
-        $main_language = $data->main_language;
+        $main_language = esc_html(stripcslashes($data->main_language));
         $source = $data->source;
-        $translate = $data->translate;
+        $translate = esc_html(stripcslashes($data->translate));
         $is_json = $data->is_json;
 
         $table = $wpdb->prefix . 'helix_level_categories';
@@ -221,8 +221,8 @@ class EditorH extends Controller
                 'level_cat_id' => $this->model["level_cat_id"],
                 'vocable_level_id' => $this->model["vocable_level"],
                 'tense_id' => $this->model["tense_id"],
-                'translate' => $this->model["translate"],
-                'main_language' => $this->model["main_language"],
+                'translate' => wp_strip_all_tags($this->model["translate"]),
+                'main_language' => wp_strip_all_tags($this->model["main_language"]),
                 'source' => $this->model["source"],
             ),
             array('id' => $this->model["id"])

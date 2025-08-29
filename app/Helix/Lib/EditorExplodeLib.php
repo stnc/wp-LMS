@@ -11,7 +11,17 @@ class EditorExplodeLib
 
         global $wpdb;
         $table_name = $wpdb->prefix . 'helix_grammer';
-        $results = $wpdb->get_results("SELECT * FROM $table_name WHERE type= 'modal verbs' and status=1 ", "ARRAY_A");
+     
+
+
+        $arama = "selman";
+
+$sql ="SELECT * FROM $table_name WHERE type= 'modal verbs' and status=1 ";
+$results = $wpdb->get_results($sql, "ARRAY_A");
+
+
+
+
 
         // print_r($results);
 
