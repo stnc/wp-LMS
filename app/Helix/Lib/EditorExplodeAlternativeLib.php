@@ -19,7 +19,7 @@ class EditorExplodeAlternativeLib
         global $wpdb;
         $table_name = $wpdb->prefix . 'helix_grammer';
 
-        $sql = "SELECT word,alternatives FROM $table_name WHERE type= 'modal verbs' and status=1 and alternatives<>''";
+        $sql = "SELECT word,alternatives FROM $table_name WHERE  status=1 and alternatives<>''"; //type= 'modal verbs' and
         $results = $wpdb->get_results($sql, "ARRAY_A");
         $value = str_replace("’", "'", $value);
         $value = stripcslashes($value);
@@ -43,20 +43,20 @@ class EditorExplodeAlternativeLib
         $result = $text;
         // \b: kelime sınırı, i: büyük/küçük harf duyarsız 
         if (preg_match("/\b" . preg_quote($search, '/') . "\b/i", $text)) {
-            //  $value = $this->replace_regular_with_Color($value, $expData, $alternatives["word"]);// for test 
-            return $result = $this->replaceRegular($text, $search, $replace);
+            //  $value = $this->replace_with_Color($value, $expData, $alternatives["word"]);// for test 
+            return $result = $this->replace($text, $search, $replace);
         } else {
             return $text;
         }
     }
 
-    public function replaceRegular($text, $search, $replace)
+    public function replace($text, $search, $replace)
     {
         $updatedText = str_replace($search, $replace, $text);
         return $updatedText;
     }
 
-    public function replace_regular_with_Color($text, $search, $replace)
+    public function replace_with_Color($text, $search, $replace)
     {
         $replace = '<span style="color:red">' . $replace . '</span>';
 

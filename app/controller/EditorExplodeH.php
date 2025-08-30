@@ -79,30 +79,35 @@ class EditorExplodeH extends Controller
 
         $comment = $data->comment;
 
-        $main_language_explode = Strings::split($main_language, '~ \s*~');
+echo "<pre>";
+        echo $main_language = $this->engLib->modalVerbs2($main_language);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+echo "<br>";
 
+
+        $main_language_explode = Strings::split($main_language, '~ \s*~');
+print_r(  $main_language_explode);
         $main_language_json = "";
 
         $translate_language_json = "";
 
-        foreach ($main_language_explode as $key => $value) {
-            $value = Strings::trim($value);
-            $value = Strings::lower($value);
-            // $value = Strings::fixEncoding($value);
-            // echo preg_match( '/\s/', ' ' );   // 1
-            $value = $this->engLib->modalVerbs($value);
-            $value = $this->engLib->conjunctions($value);
-            $value = $this->engLib->prepositions($value);
-            $value = $this->engLib->ComplexPrepositions($value);
-            $value = $this->engLib->prepositionsOfTime($value);
-            $main_language_json .= $this->engLib2->mainLanguageHtml($value);
-        }
-
+        // foreach ($main_language_explode as $key => $value) {
+        //     $value = Strings::trim($value);
+        //     $value = Strings::lower($value);
+        //     // $value = Strings::fixEncoding($value);
+        //     // echo preg_match( '/\s/', ' ' );   // 1
+        //     $value = $this->engLib->modalVerbs($value);
+        //     $value = $this->engLib->conjunctions($value);
+        //     $value = $this->engLib->prepositions($value);
+        //     $value = $this->engLib->ComplexPrepositions($value);
+        //     $value = $this->engLib->prepositionsOfTime($value);
+        //     $main_language_json .= $this->engLib2->mainLanguageHtml($value);
+        // }
+        $main_language_json .= $this->engLib2->mainLanguageHtml($main_language);
         $piecesTR = Strings::split($translate, '~ \s*~');
 
         $gruplar = array_chunk($piecesTR, 4);
 
-        // Grupları yazdır
+        // burasi surukle birak tabloyu olusturmak icin yapildi 
         foreach ($gruplar as $index => $translate_decode) {
             $translate_language_json .= "<tr>";
 

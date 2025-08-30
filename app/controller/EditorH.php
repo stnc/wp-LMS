@@ -115,9 +115,7 @@ class EditorH extends Controller
 
         //wp_helix_grammer tablosununun alternatives kolonuna gore cumledeki kelimeleri sadece tek bir kelime yaptik yani word kelimesindeki gibi olmasini sagladik
 //ornegin will'not,will' not gibi bir kelime varsa bunu will not olarak degistirdik (replace) 
-        $translate = $this->engLibAlternative->cleanGrammer($this->model["translate"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
-
-
+        $main_language = $this->engLibAlternative->cleanGrammer($this->model["main_language"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
 
         $success = $wpdb->insert(
             $helixFormTableNameMain,
@@ -125,13 +123,11 @@ class EditorH extends Controller
                 'level_cat_id' => $this->model["level_cat_id"],
                 'vocable_level_id' => $this->model["vocable_level"],
                 'tense_id' => $this->model["tense_id"],
-                'translate' => $translate,
-                'main_language' => $this->model["main_language"],
+                'translate' => $this->model["translate"],
+                'main_language' =>   $main_language ,
                 'source' => $this->model["source"],
             ),
         );
-
-
 
         if ($success) {
 
@@ -241,7 +237,7 @@ class EditorH extends Controller
             // echo $this->model["translate"];
             //  echo "2<br>";
 
-        $translate = $this->engLibAlternative->cleanGrammer($this->model["translate"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+        $main_language = $this->engLibAlternative->cleanGrammer($this->model["main_language"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
 
 
         $success1 = $wpdb->update(
@@ -250,8 +246,8 @@ class EditorH extends Controller
                 'level_cat_id' => $this->model["level_cat_id"],
                 'vocable_level_id' => $this->model["vocable_level"],
                 'tense_id' => $this->model["tense_id"],
-                'translate' => $translate,
-                'main_language' => ($this->model["main_language"]),
+                'translate' =>  $this->model["translate"],
+                'main_language' => $main_language,
                 'source' => $this->model["source"],
             ),
             array('id' => $this->model["id"])

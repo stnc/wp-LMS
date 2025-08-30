@@ -117,6 +117,7 @@ class DatabaseInstall
                             comment LONGTEXT NULL DEFAULT NULL,
                             link TEXT NULL DEFAULT NULL,
                             type CHAR(50) NOT NULL,
+                            shortcode CHAR(50) NOT NULL,
                             status TINYINT(1) NULL DEFAULT '1',
                             PRIMARY KEY (id)
                         ) $charset_collate;";
