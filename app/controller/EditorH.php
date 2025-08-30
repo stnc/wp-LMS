@@ -1,4 +1,5 @@
 <?php
+use Helix\Lib\EditorExplodeAlternativeLib;
 
 class EditorH extends Controller
 {
@@ -7,10 +8,16 @@ class EditorH extends Controller
     private $helixFormTableNameMain;
 
     private $model = array();
+    private $engLibAlternative;
+
 
     public function __construct()
     {
         global $wpdb;
+
+        $this->engLibAlternative = new EditorExplodeAlternativeLib();
+
+
         $this->helixFormTableNameMain = $wpdb->prefix . 'helix_words';
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/wrapper01-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/sidebar02-XHTML.php');
@@ -87,13 +94,13 @@ class EditorH extends Controller
         $table_tense_list = $wpdb->prefix . 'helix_tense';
         $sql_tense_List = 'SELECT * FROM ' . $table_tense_list . '  WHERE status=1';
         $vocable_tense_list = $wpdb->get_results($sql_tense_List);
-        $level=0;
-        $level_cat_id=0;
-        $tense_id=0;
-        $vocable_level=0;
-        $main_language="";
-        $translate="";
-        $source ="";
+        $level = 0;
+        $level_cat_id = 0;
+        $tense_id = 0;
+        $vocable_level = 0;
+        $main_language = "";
+        $translate = "";
+        $source = "";
         require(HELIX_PLUGIN_PATH . 'app/view/editorH/editorH-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
@@ -105,17 +112,26 @@ class EditorH extends Controller
     {
         global $wpdb;
         $helixFormTableNameMain = $this->helixFormTableNameMain;
+
+        //wp_helix_grammer tablosununun alternatives kolonuna gore cumledeki kelimeleri sadece tek bir kelime yaptik yani word kelimesindeki gibi olmasini sagladik
+//ornegin will'not,will' not gibi bir kelime varsa bunu will not olarak degistirdik (replace) 
+        $translate = $this->engLibAlternative->cleanGrammer($this->model["translate"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+
+
+
         $success = $wpdb->insert(
             $helixFormTableNameMain,
             array(
                 'level_cat_id' => $this->model["level_cat_id"],
                 'vocable_level_id' => $this->model["vocable_level"],
                 'tense_id' => $this->model["tense_id"],
-                'translate' => $this->model["translate"],
+                'translate' => $translate,
                 'main_language' => $this->model["main_language"],
                 'source' => $this->model["source"],
             ),
         );
+
+
 
         if ($success) {
 
@@ -156,53 +172,61 @@ class EditorH extends Controller
         global $wpdb;
         $helixFormTableNameMain = $this->helixFormTableNameMain;
         $editId = sanitize_text_field($_GET['id']);
-        $data = $wpdb->get_row($wpdb->prepare("SELECT *  FROM " . $helixFormTableNameMain . "  WHERE id = %d", $editId));
+        $data = $wpdb->get_row($wpdb->prepare("SELECT *  FROM " . $helixFormTableNameMain . "  WHERE id = %d and status=1", $editId));
 
-        $id = $data->id;
-        $level_cat_id = $data->level_cat_id;
-        $tense_id = $data->tense_id;
-        $vocable_level = $data->vocable_level_id;
-        $main_language = esc_html(stripcslashes($data->main_language));
-        $source = $data->source;
-        $translate = esc_html(stripcslashes($data->translate));
-        $is_json = $data->is_json;
+        if ($data == null) {
+            esc_html_e('boyle bir veri bulunamadi silinmis eklenmemis veya statusu degismis olabilir', 'helix-lng');
+        } else {
+            $id = $data->id;
+            $level_cat_id = $data->level_cat_id;
+            $tense_id = $data->tense_id;
+            $vocable_level = $data->vocable_level_id;
+            $main_language = esc_html(stripcslashes($data->main_language));
+            $source = $data->source;
+            $translate = esc_html(stripcslashes($data->translate));
+            $is_json = $data->is_json;
 
-        $table = $wpdb->prefix . 'helix_level_categories';
-        $sql_company_list = 'SELECT * FROM ' . $table . '  WHERE status=1';
-        $categoriesList = $wpdb->get_results($sql_company_list);
+            $table = $wpdb->prefix . 'helix_level_categories';
+            $sql_company_list = 'SELECT * FROM ' . $table . '  WHERE status=1';
+            $categoriesList = $wpdb->get_results($sql_company_list);
 
-        $table = $wpdb->prefix . 'helix_speak_level_categories';
-        $sql_SpeakLevelList = 'SELECT * FROM ' . $table . '  WHERE status=1';
-        $categoriesSpeakLevelList = $wpdb->get_results($sql_SpeakLevelList);
-
-
-
-        $table_tense_list = $wpdb->prefix . 'helix_tense';
-        $sql_tense_List = 'SELECT * FROM ' . $table_tense_list . '  WHERE status=1';
-        $vocable_tense_list = $wpdb->get_results($sql_tense_List);
+            $table = $wpdb->prefix . 'helix_speak_level_categories';
+            $sql_SpeakLevelList = 'SELECT * FROM ' . $table . '  WHERE status=1';
+            $categoriesSpeakLevelList = $wpdb->get_results($sql_SpeakLevelList);
 
 
 
-        $table_vocable_level_List = $wpdb->prefix . 'helix_vocable_level';
-        $sql_vocable_level_List = 'SELECT * FROM ' . $table_vocable_level_List . '  WHERE status=1';
-        $vocable_level_List = $wpdb->get_results($sql_vocable_level_List);
+            $table_tense_list = $wpdb->prefix . 'helix_tense';
+            $sql_tense_List = 'SELECT * FROM ' . $table_tense_list . '  WHERE status=1';
+            $vocable_tense_list = $wpdb->get_results($sql_tense_List);
 
 
 
-        $table = $wpdb->prefix . 'helix_level_categories_record';
-        $sql_level_categories_record = 'SELECT level_id FROM ' . $table . '  WHERE word_id=' . $editId;
-        $level_categories_record = $wpdb->get_results($sql_level_categories_record, 'ARRAY_A');
+            $table_vocable_level_List = $wpdb->prefix . 'helix_vocable_level';
+            $sql_vocable_level_List = 'SELECT * FROM ' . $table_vocable_level_List . '  WHERE status=1';
+            $vocable_level_List = $wpdb->get_results($sql_vocable_level_List);
 
-        // echo "<pre>";
-        $nlist = array();
-        foreach ($level_categories_record as $value) {
-            $nlist[] = $value["level_id"];
+
+
+            $table = $wpdb->prefix . 'helix_level_categories_record';
+            $sql_level_categories_record = 'SELECT level_id FROM ' . $table . '  WHERE word_id=' . $editId;
+            $level_categories_record = $wpdb->get_results($sql_level_categories_record, 'ARRAY_A');
+
+            // echo "<pre>";
+            $nlist = array();
+            foreach ($level_categories_record as $value) {
+                $nlist[] = $value["level_id"];
+            }
+
+            require(HELIX_PLUGIN_PATH . 'app/view/editorH/editorH-XHTML.php');
+
         }
 
 
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editorH/editorH-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
+
+
     }
 
     /**
@@ -213,6 +237,11 @@ class EditorH extends Controller
 
         global $wpdb;
         $helixFormTableNameMain = $this->helixFormTableNameMain;
+                    //echo "1<br>";
+            // echo $this->model["translate"];
+            //  echo "2<br>";
+
+        $translate = $this->engLibAlternative->cleanGrammer($this->model["translate"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
 
 
         $success1 = $wpdb->update(
@@ -221,8 +250,8 @@ class EditorH extends Controller
                 'level_cat_id' => $this->model["level_cat_id"],
                 'vocable_level_id' => $this->model["vocable_level"],
                 'tense_id' => $this->model["tense_id"],
-                'translate' => wp_strip_all_tags($this->model["translate"]),
-                'main_language' => wp_strip_all_tags($this->model["main_language"]),
+                'translate' => $translate,
+                'main_language' => ($this->model["main_language"]),
                 'source' => $this->model["source"],
             ),
             array('id' => $this->model["id"])

@@ -13,6 +13,7 @@ class EditorExplodeH extends Controller
 
     private $engLib;
     private $engLib2;
+    private $engLibAlternative;
     private $helixFormTableNameMain;
 
     public function __construct()
@@ -192,7 +193,7 @@ class EditorExplodeH extends Controller
 
 //wp_helix_grammer tablosununun alternatives kolonuna gore cumledeki kelimeleri sadece tek bir kelime yaptik yani word kelimesindeki gibi olmasini sagladik
 //ornegin will'not,will' not gibi bir kelime varsa bunu will not olarak degistirdik (replace) 
-        $value = $this->engLibAlternative->kisaltmalar($value);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+        $value = $this->engLibAlternative->cleanGrammer($value);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
 
         /// this  line, database save process  // TODO: save it 
 

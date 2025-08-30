@@ -40,6 +40,7 @@ class DatabaseInstall
             is_json TINYINT(4) NULL DEFAULT '0',
             comment LONGTEXT NULL DEFAULT NULL,
             source TEXT NULL DEFAULT NULL,
+            status TINYINT(1) NULL DEFAULT '1',
             PRIMARY KEY  (id),
             INDEX tr (main_language(191))
         ) $charset_collate;";

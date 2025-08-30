@@ -2,93 +2,57 @@
 namespace Helix\Lib;
 class EditorExplodeAlternativeLib
 {
-    public function kisaltmalar($value)
+    public function cleanGrammer($value)
     {
-/*
- Bu "örnek" bir shan't, shall 'not, metin ve içinde 'tırnak' var. shall ' not The shall 'not Ukrainian will'not , could Att shall 'not acks That could' not Are will not Forcing will' not Russia to will Ration Its Fuel shan't be shall ' not 
- */
+        /*
+         Bu "örnek" bir shan't, shall 'not, metin ve içinde 'tırnak' var. shall ' not The shall 'not Ukrainian will'not , could Att shall 'not acks That could' not Are will not Forcing will' not Russia to will Ration Its Fuel shan't be shall ' not 
+
+         The shall 'not Ukrainian could Attacks That could’ not Are will not Forcing Russia to will Ration Its shan't Fuel can be shall ’ not
+
+         The shall 'not Ukrainian could  Attacks That could’ not Are will not Forcing would not Russia to will Ration Its shan't Fuel can be shall ’ not , would 'not
+
+         The shall 'not Ukrainian could  Attacks would not, would 'not That could’ not Are will not Forcing would not Russia to will Ration Its shan't Fuel can be shall ’ not , would 'not
+
+         */
+
+
         global $wpdb;
         $table_name = $wpdb->prefix . 'helix_grammer';
 
         $sql = "SELECT word,alternatives FROM $table_name WHERE type= 'modal verbs' and status=1 and alternatives<>''";
-$results = $wpdb->get_results($sql, "ARRAY_A");
-
-// $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM `".$wpdb->prefix."tablename` WHERE `foo` = %s ORDER BY `time` DESC LIMIT 50", $foo));
-
+        $results = $wpdb->get_results($sql, "ARRAY_A");
         $value = str_replace("’", "'", $value);
         $value = stripcslashes($value);
-        // print_r($results);
-
-        //$keywords = array_column($results, 'word','alternatives');
-        // echo "start<pre>";
-        //  print_r($keywords);
-
-        // echo "13333<br>";
-    
-        // echo htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-        // echo "<br>end<br>";
-        // echo "<br>";
-        $found = [];
 
         foreach ($results as $alternatives) {
-
-
-            echo "<br>";
-            echo ($alternatives["word"]);
-            echo "<br>";
-            // echo ($alternatives["alternatives"]);
             $alternative_t = trim($alternatives["alternatives"]);
-            $exp = explode(",",$alternative_t );
-           
-            // echo "<br>";
-//  print_r($exp);
-
-            foreach ($exp as $data) {
-                echo "<br>";
-                echo $data;
-                echo "<br>";
-
-                // \b: kelime sınırı, i: büyük/küçük harf duyarsız
-                if (preg_match("/\b" . preg_quote($data, '/') . "\b/i", $value)) {
-                    $found[] = $value;
-                    $value = $this->replace_regular_with_Color($value, $data, $alternatives["word"]);
-                    // $value = $this->replaceRegular($value, $data,$alternatives["word"]);
-                }
+            $exp = explode(",", $alternative_t);
+            foreach ($exp as $expData) {
+                $value = $this->preg_matchRegular($value, $expData, $alternatives["word"]);
             }
-
-
-            echo $value;
-
         }
-
-
-
-        if (!empty($found)) {
-            echo "<br>";
-            echo "Tam eşleşen kelimeler: " . implode(", ", $found);
-        } else {
-            echo "<br>";
-            echo "Hiçbir tam kelime eşleşmesi bulunamadı.";
-        }
-
-
-        echo "<br>0";
-
-
+        return $value;
     }
-
+    /*
+      $text = The shall 'not Ukrainian could  Attacks would not, would 'not That could’ not Are will not Forcing would not Russia to will Ration Its shan't Fuel can be shall ’ not , would 'not
+    $search = shan't,shall 'not,shall 'not,shall ' not,shall ' not ===== her hangi biri 
+     $replace = shall not 
+     */
+    public function preg_matchRegular($text, $search, $replace)
+    {
+        $result = $text;
+        // \b: kelime sınırı, i: büyük/küçük harf duyarsız 
+        if (preg_match("/\b" . preg_quote($search, '/') . "\b/i", $text)) {
+            //  $value = $this->replace_regular_with_Color($value, $expData, $alternatives["word"]);// for test 
+            return $result = $this->replaceRegular($text, $search, $replace);
+        } else {
+            return $text;
+        }
+    }
 
     public function replaceRegular($text, $search, $replace)
     {
-        // $replace = '<span style="color:red">'.$replace.'</span>';
-
-
         $updatedText = str_replace($search, $replace, $text);
-
-
-
-        echo $updatedText;
-        echo "<br>";
         return $updatedText;
     }
 
@@ -96,13 +60,8 @@ $results = $wpdb->get_results($sql, "ARRAY_A");
     {
         $replace = '<span style="color:red">' . $replace . '</span>';
 
-
         $updatedText = str_replace($search, $replace, $text);
 
-
-
-        echo $updatedText;
-        echo "<br>";
         return $updatedText;
     }
 
