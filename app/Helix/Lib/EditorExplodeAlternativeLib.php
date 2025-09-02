@@ -19,10 +19,10 @@ class EditorExplodeAlternativeLib
         global $wpdb;
         $table_name = $wpdb->prefix . 'helix_grammer';
 
-        $sql = "SELECT word,alternatives FROM $table_name WHERE  status=1 and alternatives<>''"; //type= 'modal verbs' and
+        $sql = "SELECT word,alternatives FROM $table_name WHERE  status=1 and alternatives<>''    ORDER BY ranking_number ASC "; 
         $results = $wpdb->get_results($sql, "ARRAY_A");
         $value = str_replace("’", "'", $value);
-        $value = stripcslashes($value);
+        // $value = stripcslashes($value);
 
         foreach ($results as $alternatives) {
             $alternative_t = trim($alternatives["alternatives"]);

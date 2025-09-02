@@ -5,6 +5,8 @@ use Nette\Utils\Strings;
 use Helix\Lib\EditorExplodeLib;
 use Helix\Lib\EditorExplodeLib2;
 use Helix\Lib\EditorExplodeAlternativeLib;
+use Helix\Lib\Cryptography;
+use Helix\Lib\StringHelix;
 
 
 class EditorExplodeH extends Controller
@@ -15,6 +17,9 @@ class EditorExplodeH extends Controller
     private $engLib2;
     private $engLibAlternative;
     private $helixFormTableNameMain;
+
+    private $crypto;
+    private $string;
 
     public function __construct()
     {
@@ -30,7 +35,8 @@ class EditorExplodeH extends Controller
         $this->engLib = new EditorExplodeLib();
         $this->engLib2 = new EditorExplodeLib2();
         $this->engLibAlternative = new EditorExplodeAlternativeLib();
-
+        $this->crypto = new Cryptography();
+        $this->string = new StringHelix();
         if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'create')) {
             $this->create();
         }
@@ -53,6 +59,7 @@ class EditorExplodeH extends Controller
     {
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -79,30 +86,29 @@ class EditorExplodeH extends Controller
 
         $comment = $data->comment;
 
-echo "<pre>";
+        //wp_helix_grammer tablosununun alternatives kolonuna gore cumledeki kelimeleri sadece tek bir kelime yaptik yani word kelimesindeki gibi olmasini sagladik
+//ornegin will'not,will' not gibi bir kelime varsa bunu will not olarak degistirdik (replace) 
+
+ echo "<pre>";
         echo $main_language = $this->engLib->modalVerbs2($main_language);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
 echo "<br>";
 
 
         $main_language_explode = Strings::split($main_language, '~ \s*~');
-print_r(  $main_language_explode);
+ print_r(  $main_language_explode);
         $main_language_json = "";
 
         $translate_language_json = "";
 
-        // foreach ($main_language_explode as $key => $value) {
-        //     $value = Strings::trim($value);
-        //     $value = Strings::lower($value);
-        //     // $value = Strings::fixEncoding($value);
-        //     // echo preg_match( '/\s/', ' ' );   // 1
-        //     $value = $this->engLib->modalVerbs($value);
-        //     $value = $this->engLib->conjunctions($value);
-        //     $value = $this->engLib->prepositions($value);
-        //     $value = $this->engLib->ComplexPrepositions($value);
-        //     $value = $this->engLib->prepositionsOfTime($value);
-        //     $main_language_json .= $this->engLib2->mainLanguageHtml($value);
-        // }
-        $main_language_json .= $this->engLib2->mainLanguageHtml($main_language);
+        foreach ($main_language_explode as $key => $value) {
+            if ( $this->string->firstNLetter($value,3)=="***"){
+                 $value =  $this-> wordProcess($value);
+                echo "<br>";
+                echo $value =  $this->crypto->simpleXORDecrypt($value, "helix");
+            }
+            $main_language_json .= $this->engLib2->mainLanguageHtml($value);
+        }
+    
         $piecesTR = Strings::split($translate, '~ \s*~');
 
         $gruplar = array_chunk($piecesTR, 4);
@@ -196,21 +202,8 @@ print_r(  $main_language_explode);
 
 
 
-//wp_helix_grammer tablosununun alternatives kolonuna gore cumledeki kelimeleri sadece tek bir kelime yaptik yani word kelimesindeki gibi olmasini sagladik
-//ornegin will'not,will' not gibi bir kelime varsa bunu will not olarak degistirdik (replace) 
-        $value = $this->engLibAlternative->cleanGrammer($value);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
-
-        /// this  line, database save process  // TODO: save it 
-
-        $this->engLib->modalVerbs2($value);
 
 
-        // $value = $this->engLib->conjunctions($value);
-        // $value = $this->engLib->prepositions($value);
-        // $value = $this->engLib->ComplexPrepositions($value);
-        // $value = $this->engLib->prepositionsOfTime($value);
-        // $main_language_json .= $this->engLib2->mainLanguageHtml($value);
-        // $button_html_json .= $this->engLib2->helix_button_html_bootsrap($value, $key);
 
 
 
@@ -262,6 +255,13 @@ foreach ($groups as $index => $translate_decode) {
      */
     public function delete()
     {
+
+    }
+
+    private function wordProcess($word){
+        $length = $this->string-> stringLen($word);
+
+       return  $this->string->firstNLetterDynamic($word,3, $length);
 
     }
 }

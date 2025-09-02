@@ -238,9 +238,10 @@ class EditorH extends Controller
             //  echo "2<br>";
 
         $main_language = $this->engLibAlternative->cleanGrammer($this->model["main_language"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+// print_r($main_language );
+// die;
 
-
-        $success1 = $wpdb->update(
+        $wpdb->update(
             $helixFormTableNameMain,
             array(
                 'level_cat_id' => $this->model["level_cat_id"],

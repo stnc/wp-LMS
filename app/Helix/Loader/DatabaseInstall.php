@@ -111,6 +111,7 @@ class DatabaseInstall
         $table_name = $wpdb->prefix . 'helix_grammer';
         $sql = "CREATE TABLE $table_name (
                             id INT(11) NOT NULL AUTO_INCREMENT,
+                            ranking_number INT(11) NOT NULL,
                             word VARCHAR(255) NOT NULL,
                             encrypt_word LONGTEXT NULL DEFAULT NULL,
                             alternatives LONGTEXT NULL DEFAULT NULL,
