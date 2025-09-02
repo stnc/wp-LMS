@@ -100,6 +100,7 @@ echo "<br>";
 
         $translate_language_json = "";
 
+    
         foreach ($main_language_explode as $key => $value) {
             if ( $this->string->firstNLetter($value,3)=="***"){
                  $value =  $this-> wordProcess($value);
@@ -202,16 +203,11 @@ echo "<br>";
 
 
 
-
-
-
-
-
-        /////
-/*
 $main_language_decode = json_decode($main_language_data, false, 512, JSON_BIGINT_AS_STRING);
 $main_language_json = "";
 $button_html_json = "";
+
+
 foreach ($main_language_decode as $key => $value) {
     $value = $this->engLib->modalVerbs($value);
     $value = $this->engLib->conjunctions($value);
@@ -235,7 +231,7 @@ foreach ($groups as $index => $translate_decode) {
     }
     $translate_language_json .= "</tr>";
 }
-*/
+
 
 
         require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
