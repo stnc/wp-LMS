@@ -211,12 +211,12 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
                         $delete_nonce = wp_create_nonce('sp_delete_helixMaps'); ?>
 
                         <?php if ($is_json == 1): ?>
-                            <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
+                            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
                                 id="savebtn-helixMap2" class="btn btn-primary">Parcalanmis Kelimeyi Duzenle</a>
                         <?php endif; ?>
 
                         <?php if ($is_json == 0): ?>
-                            <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=create&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
+                            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=create&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
                                 id="savebtn-helixMap2" class="btn btn-primary">Kelimeyi Parcala</a>
                         <?php endif; ?>
 

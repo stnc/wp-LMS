@@ -2,7 +2,7 @@
 kaydet ve kelimeyi parcala butonu eklenecek 
 
 mesela alltaki linkte editore git butonu eklenebilir 
-http://english.test/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=106&_wpnonce=5098c96fd8
+http://english.test/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=106&_wpnonce=5098c96fd8
 
 
 

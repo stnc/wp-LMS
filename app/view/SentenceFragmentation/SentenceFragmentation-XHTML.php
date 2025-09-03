@@ -5,11 +5,11 @@ $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : "";
 
 
 // $title = "Add"; 
-$form = '<form action="/wp-admin/admin.php?page=editor_explodeH&trigger=store" method="post">';
+$form = '<form action="/wp-admin/admin.php?page=sentenceFragmentation&trigger=store" method="post">';
 
 if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
     // $title = esc_html_e('Show', 'helix-lng');
-    $form = '<form action="/wp-admin/admin.php?page=editor_explodeH&trigger=update&id=' . $id . '" method="post">';
+    $form = '<form action="/wp-admin/admin.php?page=sentenceFragmentation&trigger=update&id=' . $id . '" method="post">';
 }
 
 
@@ -27,7 +27,7 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
 
 <div class="content">
     <div class="container-fluid">
-        <form action="/wp-admin/admin.php?page=editor_explodeH&trigger=store&id=<?php echo $id ?>" method="post">
+        <form action="/wp-admin/admin.php?page=sentenceFragmentation&trigger=store&id=<?php echo $id ?>" method="post">
 
             <div class="row">
                 <div class="col-lg-6">

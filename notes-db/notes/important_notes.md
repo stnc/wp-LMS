@@ -4,9 +4,9 @@ https://www.php.net/manual/en/function.str-contains.php
 
 
 
-http://english.test/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=94
+http://english.test/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=94
 
-http://english.test/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=129
+http://english.test/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=129
 
 
 

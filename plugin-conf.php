@@ -5,7 +5,7 @@ function helix_output_buffer()
 } 
 add_action('init', 'helix_output_buffer');
 
-$helix_fullpage_routes = array("helix_homepage", "editorH", "editor_explodeH","helix_about");
+$helix_fullpage_routes = array("helix_homepage", "editorH", "sentenceFragmentation","helix_about");
 
 function helix_default_setting()
 {

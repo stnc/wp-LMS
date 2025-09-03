@@ -445,7 +445,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 						<hr>
 
 						<div><mark class="dont"></mark> <a
-								href="/wp-admin/admin.php?page=editor_explodeH&trigger=show&building_id=<?php echo $data->building_id; ?>&_id=<?php echo $data->_id; ?>&id=<?php echo $data->id; ?>"><?php esc_html_e('Edit', 'helix-lng') ?></a>
+								href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=show&building_id=<?php echo $data->building_id; ?>&_id=<?php echo $data->_id; ?>&id=<?php echo $data->id; ?>"><?php esc_html_e('Edit', 'helix-lng') ?></a>
 						</div>
 						<hr>
 						<!-- <div><mark class="dont">Eklenen Dosya:</mark><?php echo $oynat ?></div> -->

@@ -9,7 +9,7 @@ use Helix\Lib\Cryptography;
 use Helix\Lib\StringHelix;
 
 
-class EditorExplodeH extends Controller
+class SentenceFragmentation extends Controller
 {
 
 
@@ -127,7 +127,7 @@ echo "<br>";
             $translate_language_json .= "</tr>";
         }
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/SentenceFragmentation/SentenceFragmentation-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
@@ -170,7 +170,7 @@ echo "<br>";
             ),
             array('id' => $editId)
         );
-        wp_redirect('/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=' . $editId, 302);
+        wp_redirect('/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=' . $editId, 302);
         die;
     }
 
@@ -234,7 +234,7 @@ foreach ($groups as $index => $translate_decode) {
 
 
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/SentenceFragmentation/SentenceFragmentation-XHTML.php');
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
@@ -262,7 +262,7 @@ foreach ($groups as $index => $translate_decode) {
     }
 }
 
-function editor_explodeH_page()
+function sentence_fragmentation_page()
 {
-    new EditorExplodeH();
+    new SentenceFragmentation();
 }
