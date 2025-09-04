@@ -125,6 +125,7 @@ class EditorH extends Controller
                 'tense_id' => $this->model["tense_id"],
                 'translate' => $this->model["translate"],
                 'main_language' =>   $main_language ,
+                'main_language_orginal' => $main_language ,
                 'source' => $this->model["source"],
             ),
         );
@@ -144,20 +145,14 @@ class EditorH extends Controller
                 }
             }
 
-            $_SESSION['helix_map_flash_msg'] = __('Record Save', 'helix-lng');
+            $_SESSION['helix_flash_msg'] = __('Record Save', 'helix-lng');
             wp_redirect('/wp-admin/admin.php?page=editorH&trigger=edit&id=' . $lastid, 302);
             die;
         }
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
 
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -236,10 +231,11 @@ class EditorH extends Controller
                     //echo "1<br>";
             // echo $this->model["translate"];
             //  echo "2<br>";
-
-        $main_language = $this->engLibAlternative->cleanGrammer($this->model["main_language"]);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
-// print_r($main_language );
-// die;
+            $main_language = str_replace("’", "'", $this->model["main_language"]);
+            $main_language = stripcslashes($main_language);
+        $main_language = $this->engLibAlternative->cleanGrammer($main_language);// burada artik elimizdeki kisaltilmis hali ile veritabanina kayit yapacagiz 
+//  print_r($main_language );
+//  die;
 
         $wpdb->update(
             $helixFormTableNameMain,
@@ -273,7 +269,7 @@ class EditorH extends Controller
 
         // if ($success1) {
         //   print_r("gelir last");
-        $_SESSION['helix_map_flash_msg'] = __('Record Updated', 'helix-lng');
+        $_SESSION['helix_flash_msg'] = __('Record Updated', 'helix-lng');
         wp_redirect('/wp-admin/admin.php?page=editorH&trigger=edit&id=' . $this->model["id"], 302);
         die;
         // }
@@ -283,6 +279,14 @@ class EditorH extends Controller
      * Remove the specified resource from storage.
      */
     public function delete()
+    {
+
+    }
+
+        /**
+     * Display the specified resource.
+     */
+    public function show()
     {
 
     }

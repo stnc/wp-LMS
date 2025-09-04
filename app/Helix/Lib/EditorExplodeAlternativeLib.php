@@ -5,14 +5,9 @@ class EditorExplodeAlternativeLib
     public function cleanGrammer($value)
     {
         /*
-         Bu "örnek" bir shan't, shall 'not, metin ve içinde 'tırnak' var. shall ' not The shall 'not Ukrainian will'not , could Att shall 'not acks That could' not Are will not Forcing will' not Russia to will Ration Its Fuel shan't be shall ' not 
+Although you may try your best, you may not succeed immediately; you shall ' not and shan't give up, even if you couldn't solve the problem before because you can learn, and you will not stop improving.
 
-         The shall 'not Ukrainian could Attacks That could’ not Are will not Forcing Russia to will Ration Its shan't Fuel can be shall ’ not
-
-         The shall 'not Ukrainian could  Attacks That could’ not Are will not Forcing would not Russia to will Ration Its shan't Fuel can be shall ’ not , would 'not
-
-         The shall 'not Ukrainian could  Attacks would not, would 'not That could’ not Are will not Forcing would not Russia to will Ration Its shan't Fuel can be shall ’ not , would 'not
-
+Ne kadar çabalarsanız çabalayın, hemen başarılı olamayabilirsiniz; daha önce çözemediğiniz bir sorunu bile olsa, pes etmeyin; çünkü öğrenebilirsiniz ve gelişmeyi bırakmazsınız.
          */
 
 
@@ -21,8 +16,7 @@ class EditorExplodeAlternativeLib
 
         $sql = "SELECT word,alternatives FROM $table_name WHERE  status=1 and alternatives<>''    ORDER BY ranking_number ASC "; 
         $results = $wpdb->get_results($sql, "ARRAY_A");
-        $value = str_replace("’", "'", $value);
-        // $value = stripcslashes($value);
+
 
         foreach ($results as $alternatives) {
             $alternative_t = trim($alternatives["alternatives"]);
@@ -34,7 +28,7 @@ class EditorExplodeAlternativeLib
         return $value;
     }
     /*
-      $text = The shall 'not Ukrainian could  Attacks would not, would 'not That could’ not Are will not Forcing would not Russia to will Ration Its shan't Fuel can be shall ’ not , would 'not
+Although you may try your best, you may not succeed immediately; you shall ' not and shan't give up, even if you couldn't solve the problem before because you can learn, and you will not stop improving.
     $search = shan't,shall 'not,shall 'not,shall ' not,shall ' not ===== her hangi biri 
      $replace = shall not 
      */

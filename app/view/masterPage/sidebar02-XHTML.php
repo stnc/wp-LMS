@@ -38,7 +38,7 @@
 
 
         <li>
-            <a href="/wp-admin/admin.php?page=editorH&trigger=edit&id=129"><i
+            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=create&id=132"><i
                     class="fas fa-file-alt"></i><?php esc_html_e('Test sayfam', 'helix-lng') ?></a>
         </li>
 

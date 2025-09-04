@@ -21,7 +21,7 @@ could’ not
 
 
 
-$HelixPluginVersion = "5";
+$HelixPluginVersion = "5.1";
 require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer autoload
 require_once ('plugin-conf.php');
 use Helix\Loader\I18n;

@@ -38,6 +38,7 @@ class DatabaseInstall
             translate LONGTEXT NULL DEFAULT NULL,
             translate_json LONGTEXT NULL DEFAULT NULL,
             is_json TINYINT(4) NULL DEFAULT '0',
+            main_language_orginal LONGTEXT NULL DEFAULT NULL,
             comment LONGTEXT NULL DEFAULT NULL,
             source TEXT NULL DEFAULT NULL,
             status TINYINT(1) NULL DEFAULT '1',

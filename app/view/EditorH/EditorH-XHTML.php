@@ -18,12 +18,12 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
 
 
         <?php
-        if (isset($_SESSION['helix_map_flash_msg'])) {
+        if (isset($_SESSION['helix_flash_msg'])) {
             ?>
             <p class="alert alert-success">
-                <?php echo $_SESSION['helix_map_flash_msg']; ?>
+                <?php echo $_SESSION['helix_flash_msg']; ?>
             </p>
-            <?php unset($_SESSION['helix_map_flash_msg']); ?>
+            <?php unset($_SESSION['helix_flash_msg']); ?>
         <?php } ?>
 
         <?php echo $form ?>

@@ -3,7 +3,6 @@
 
 $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : "";
 
-
 // $title = "Add"; 
 $form = '<form action="/wp-admin/admin.php?page=sentenceFragmentation&trigger=store" method="post">';
 
@@ -13,15 +12,12 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
 }
 
 
-
-
-
-if (isset($_SESSION['helix_map_flash_msg'])) {
+if (isset($_SESSION['helix_flash_msg'])) {
     ?>
     <p class="alert alert-success">
-        <?php echo $_SESSION['helix_map_flash_msg']; ?>
+        <?php echo $_SESSION['helix_flash_msg']; ?>
     </p>
-    <?php unset($_SESSION['helix_map_flash_msg']); ?>
+    <?php unset($_SESSION['helix_flash_msg']); ?>
 <?php } ?>
 
 
@@ -30,7 +26,7 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
         <form action="/wp-admin/admin.php?page=sentenceFragmentation&trigger=store&id=<?php echo $id ?>" method="post">
 
             <div class="row">
-                <div class="col-lg-6">
+            <?php   if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) : ?>   <div class="col-lg-6"> <?php  else: ?> <div class="col-lg-12">   <?php  endif ?>
                     <div class="card">
                         <div class="card-header">Main Language</div>
                         <div class="card-body">
@@ -45,11 +41,10 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
                             </div>
                         </div>
                     </div>
-          
-
                 </div>
 
-                <div class="col-lg-5">
+                <?php   if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) : ?>
+                <div class="col-lg-6">
                     <div class="card" id="kelimatorButton" style="max-width: 100%;">
                         <div class="card-header">card olarak</div>
                         <div class="card-body">
@@ -61,23 +56,11 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
                             </div>
                         </div>
                     </div>
-                
                 </div>
+                <?php endif; ?>
 
-                <div class="col-lg-1">
-                    <div class="card" id="kelimatorButton" style="max-width: 100%;">
-                        <div class="card-header">Edit</div>
-                        <div class="card-body">
-                            <!-- <h5 class="card-title"><?php // echo $main_language ?></h5> -->
-                            <div class="content2">
-                                  <a href="/wp-admin/admin.php?page=editorH&trigger=edit&id=<?php  echo isset($_GET["id"]) ? $_GET["id"] : "0"; ?>">Duzenle</a>
-                               
 
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
 
             </div>
 
@@ -129,7 +112,7 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
                     </div>
                 </div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-1">
                     <div class="card" style="max-width: 100%;">
                         <div class="card-body">
                             <div class="row g-2">
@@ -138,6 +121,23 @@ if (isset($_SESSION['helix_map_flash_msg'])) {
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-1">
+                    <div class="card" id="kelimatorButton" style="max-width: 100%;">
+                        <div class="card-header">Edit</div>
+                        <div class="card-body">
+                            <!-- <h5 class="card-title"><?php // echo $main_language ?></h5> -->
+                            <div class="content2">
+                                  <a href="/wp-admin/admin.php?page=editorH&trigger=edit&id=<?php  echo isset($_GET["id"]) ? $_GET["id"] : "0"; ?>">Duzenle</a>
+                               
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
         </form>
     </div>
