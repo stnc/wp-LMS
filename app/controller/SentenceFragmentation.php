@@ -171,7 +171,12 @@ class SentenceFragmentation extends Controller
         $value = $data->main_language;
         $translate = $data->translate;
         $main_language_data = $data->main_language_json;
-        $main_language = $data->main_language;
+    
+        $main_language = stripcslashes($value);
+        $translate = stripcslashes($translate);
+
+
+
         $translate_data = $data->translate_json;
         $comment = $data->comment;
 

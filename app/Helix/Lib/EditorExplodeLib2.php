@@ -10,8 +10,8 @@ class EditorExplodeLib2
         return $firstLetter . $lastLetter;
     }
 
-    
-    public function mainLanguageHtml($value)      
+
+    public function mainLanguageHtml($value)
     {
         return '<div class="mb-3 col-md-3">
         <input type="text" class="form-control" name="main_language_json[]" value="' . $value . '">
@@ -19,34 +19,34 @@ class EditorExplodeLib2
     </div>';
     }
 
-    public function     helix_button_html_bootsrap($value, $no)
+    public function helix_button_html_bootsrap($value, $counter)
     {
-        $no++;
-    
+        $counter++;
+
         $output = '<p class="symbol"> ' . $value . '</p>';
         $sho = $this->helix_is_check_shortcode($value);
-        
+
         if ($sho == '[]') {
             $output = do_shortcode($value);
-        } 
-    
+        }
+
         return ' <div style="margin-left: 5px; " class="mb-2 col-md-2">
-                    <div  class="helix-element-item helixColor' . $no . '"> ' . $output . ' <p class="number">' . $no . '</p></div>
+                    <div  class="helix-element-item helixColor' . $counter . '"> ' . $output . ' <p class="number">' . $counter . '</p></div>
               </div>';
     }
-    
-    
+
+
     public function helix_button_html_isotopeUI($value, $no)
     {
         $no++;
-    
+
         $output = '<p class="symbol"> ' . $value . '</p>';
-        $sho =$this->helix_is_check_shortcode($value);
-        
+        $sho = $this->helix_is_check_shortcode($value);
+
         if ($sho == '[]') {
             $output = do_shortcode($value);
-        } 
-    
+        }
+
         return ' <div  class="helix-element-item helixColor' . $no . '">
             ' . $output . '
         <p class="number">' . $no . '</p>
