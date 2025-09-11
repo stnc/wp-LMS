@@ -118,7 +118,7 @@ class SentenceFragmentation extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created and edited resource in storage.
      */
     public function store()
     {
@@ -138,14 +138,14 @@ class SentenceFragmentation extends Controller
 
         $translate_json = json_encode($translate_language, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_HEX_APOS);
 
-        $main_language_json = str_replace("\\\u0027", "u0027", $main_language_json);
-        $translate_json = str_replace("\\\u0027", "u0027", $translate_json);
+        // $main_language_json = str_replace("\\\u0027", "u0027", $main_language_json);
+        // $translate_json = str_replace("\\\u0027", "u0027", $translate_json);
 
         $wpdb->update(
             $helixFormTableNameMain,
             array(
-                'main_language_json' => $main_language_json,
-                'translate_json' => $translate_json,
+                'main_language_json' => stripcslashes($main_language_json),
+                'translate_json' => stripcslashes($translate_json),
                 'comment' => $comment,
                 'is_json' => 1,
             ),

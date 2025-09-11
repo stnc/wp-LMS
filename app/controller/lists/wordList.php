@@ -316,7 +316,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 			WHERE main_language LIKE '%$search%' OR translate LIKE '%$search%' ";
 			if (!empty($_REQUEST['orderby'])) {
 				$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' DESC';
 			}
 
 			$sql .= " LIMIT $per_page";
@@ -328,9 +328,9 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 			if (!empty($_REQUEST['orderby'])) {
 				$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' DESC';
 			} else {
-				$sql .= ' ORDER BY w.id ASC';
+				$sql .= ' ORDER BY w.id DESC';
 			}
 
 			$sql .= " LIMIT $per_page";
