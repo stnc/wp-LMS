@@ -106,7 +106,26 @@ if (isset($_SESSION['helix_flash_msg'])) {
                         <div class="card-body">
                             <div class="row g-2">
                                 <label for="">Aciklama</label>
-                                <textarea name="comment" id=""><?php echo $comment ?></textarea>
+                               
+
+                                <?php
+$content = $comment ; // Varsayılan içerik
+$editor_id = 'comment'; // textarea ID gibi davranır
+
+$settings = array(
+  'textarea_name' => 'comment',
+  'media_buttons' => true,
+  'teeny' => true,
+  'quicktags' => true,
+  'tinymce' => array(
+  /*  'toolbar1' => 'bold italic underline | bullist numlist | link unlink',*/
+    'toolbar1' => 'bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,spellchecker,wp_fullscreen,wp_adv ',
+    'toolbar2' => 'formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help',
+  )
+);
+
+wp_editor($content, $editor_id, $settings);
+?>
                             </div>
                         </div>
                     </div>

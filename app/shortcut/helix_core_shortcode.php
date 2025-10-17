@@ -21,6 +21,7 @@ function helix_word_translate_shortcode($attr)
     $attr = shortcode_atts(
         [
             "trlang" => "off",
+            "mainlang" => "off",
             "desc" => "off",
             "id" => "0",
         ],
@@ -29,8 +30,12 @@ function helix_word_translate_shortcode($attr)
 
     $editId = sanitize_text_field($attr['id']);
     $desc = sanitize_text_field($attr['desc']);
+    $translate = sanitize_text_field($attr['trlang']);
+    $main_language = sanitize_text_field($attr['mainlang']);
     $desc_data = "";
-    $data = $wpdb->get_row($wpdb->prepare("SELECT translate_json, comment,  id  FROM " . $helixForm_tableNameMain . "  WHERE id = %d", $editId));
+    $translate_data = "";
+    $main_language_data = "";
+    $data = $wpdb->get_row($wpdb->prepare("SELECT translate_json, translate,main_language, comment,  id  FROM " . $helixForm_tableNameMain . "  WHERE id = %d", $editId));
 
     $translate_json = $data->translate_json;
 
@@ -41,8 +46,24 @@ function helix_word_translate_shortcode($attr)
     }
     if ($desc == "on") {
         $desc_data = nl2br(htmlspecialchars($data->comment));
+
+    } 
+    
+    if ($translate == "on") {
+        $translate_data ="<br><br><br><strong>". (htmlspecialchars($data->translate)) ."</strong>";
     }
+
+
+    if ($main_language == "on") {
+        $main_language_data ="<br><br><br><strong>". (htmlspecialchars($data->main_language)) ."</strong>";
+    }
+
+
+    $button_html_json .= $main_language_data;
+    $button_html_json .= $translate_data;
+
     $button_html_json .= $desc_data;
+ 
 
     if (!is_admin()) {
         $button_html_json .= '<a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=' . $editId . '" target="_blank" class="wp-first-item">edit</a>';
