@@ -29,6 +29,7 @@ class Menu
         add_submenu_page( "helix_homepage", 'Build',  __( 'Kelimeler', 'helix-lng' ) , 'manage_options', 'helix_word_list', 'helix_DataTABLE_page',null ); // list page 
 
         add_submenu_page( "helix_homepage", 'Build', __( 'About', 'helix-lng' ), 'manage_options', 'helix_about', 'helix_about_page',null );//  -- ABOUT 
+        add_submenu_page( "helix_homepage", 'Build', __( 'JQ', 'helix-lng' ), 'manage_options', 'helix_jq', 'helix_jq_page',null );//  -- ABOUT 
         
         
    

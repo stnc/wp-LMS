@@ -30,9 +30,21 @@ jQuery(document).ready(function ($) {
     });
 
 
+// yeni 1 
+jQuery(document).find('pre').each( function (){
+    jQuery(this).click(copyToClipboard);
+});
+jQuery(document).find('input').each( function (){
+    jQuery(this).change(changeString);
+});
+jQuery(document).find('code').each( function (){
+    jQuery(this).change(changeString);
+})
 
+changeString();
+
+// yeni 1 end 
 ////////////////////////////////////
-
 
 
     var addButton_translate= jQuery('.add_button_translate'); //Add button selector
@@ -50,6 +62,15 @@ jQuery(document).ready(function ($) {
         } else {
             alert('A maximum of ' + maxField + ' fields are allowed to be added. ');
         }
+
+
+
+
+
+
+
+
+
     });
 
     // Once remove button is clicked
@@ -68,9 +89,9 @@ jQuery(document).ready(function ($) {
         });
 
         // Auto-hide sidebar on window resize if window size is small
-        // $(window).on('resize', function () {
-        //     if ($(window).width() <= 768) {
-        //         $('#sidebar, #body').addClass('active');
+        // jQuery(window).on('resize', function () {
+        //     if (jQuery(window).width() <= 768) {
+        //         jQuery('#sidebar, #body').addClass('active');
         //     }
         // });
         //Bootstrap Simple Admin Template
@@ -80,3 +101,56 @@ jQuery(document).ready(function ($) {
 
 
 
+
+
+
+
+
+    jQuery('#kopyalaBtn').on('click', function() {
+
+
+    const metin = jQuery('#result').text();
+    console.log(metin);
+
+
+    metin.select();
+    document.execCommand("copy");
+  
+
+
+    navigator.clipboard.writeText(metin)
+      .then(() => {
+        alert("Metin panoya kopyalandı!");
+      })
+      .catch(err => {
+        alert("Kopyalama başarısız: " + err);
+      });
+
+
+
+  });
+
+
+
+
+function changeString(){
+
+    var string = '';
+
+    if(jQuery('#mainlang').is(":checked")){
+         string += "mainlang='on' ";
+    }else{
+        string += "mainlang='off' ";
+    }
+
+    if(jQuery('#desc').is(":checked")){
+         string += "desc='on' ";
+    }else{
+        string += "desc='off' ";
+    }
+
+
+
+
+    jQuery('#stringIK').html(string);
+}

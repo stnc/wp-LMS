@@ -2,11 +2,14 @@
 
 use Helix\Lib\EditorExplodeLib2;
 
+/***********************************************************************************************************************************************************
+ *translate olan yaziyi json olarak parcalanmis veya gruplanmis sekilde output eder
+ */
 
 add_shortcode("helix_wordTL_sc", "helix_word_translate_shortcode");
 
 /**
- * Output the form.
+ * translate olan yaziyi json olarak parcalanmis veya gruplanmis sekilde output eder
  *
  * @param      array  $atts   User defined attributes in shortcode tag
  */
@@ -14,7 +17,6 @@ function helix_word_translate_shortcode($attr)
 {
     // ob_start(); 
     global $wpdb;
-
     $lib = new EditorExplodeLib2();
     $helixForm_tableNameMain = $wpdb->prefix . 'helix_words';
 
@@ -46,7 +48,6 @@ function helix_word_translate_shortcode($attr)
     }
     if ($desc == "on") {
         $desc_data = nl2br(htmlspecialchars($data->comment));
-
     }
 
     if ($translate == "on") {
@@ -58,12 +59,9 @@ function helix_word_translate_shortcode($attr)
         $main_language_data = "<br><br><br><strong>" . (htmlspecialchars($data->main_language)) . "</strong>";
     }
 
-
     $button_html_json .= $main_language_data;
     $button_html_json .= $translate_data;
-
     $button_html_json .= $desc_data;
-
 
     if (!is_admin()) {
         $button_html_json .= '<a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=' . $editId . '" target="_blank" class="wp-first-item">edit</a>';
@@ -75,12 +73,12 @@ function helix_word_translate_shortcode($attr)
 <?php
 }
 
+/***********************************************************************************************************************************************************
+ * main language  olan yaziyi json olarak parcalanmis veya gruplanmis sekilde output eder
+ */
 
 add_shortcode("helix_wordML_sc", "helix_word_main_language_shortcode");
-
 /**
- * Output the form.
- *
  * @param      array  $atts   User defined attributes in shortcode tag
  */
 function helix_word_main_language_shortcode($attr)
@@ -113,12 +111,13 @@ function helix_word_main_language_shortcode($attr)
 
     $main_language_decode = json_decode($main_language_json, false, 512, JSON_BIGINT_AS_STRING);
     $button_html_json = '<div class="row">';
+
     foreach ($main_language_decode as $key => $value) {
         $button_html_json .= $lib->helix_button_html_bootsrap($value, $key);
     }
+
     if ($desc == "on") {
         $desc_data = nl2br(htmlspecialchars($data->comment));
-
     }
 
     if ($translate == "on") {
@@ -130,13 +129,9 @@ function helix_word_main_language_shortcode($attr)
         $main_language_data = "<br><br><br><strong>" . (htmlspecialchars($data->main_language)) . "</strong>";
     }
 
-
-
     $button_html_json .= $main_language_data;
     $button_html_json .= $translate_data;
-
     $button_html_json .= $desc_data;
-
 
     if (!is_admin()) {
         $button_html_json .= '<a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=' . $editId . '" target="_blank" class="wp-first-item">edit</a>';
@@ -148,13 +143,14 @@ function helix_word_main_language_shortcode($attr)
 
 
 
-
-
+/***********************************************************************************************************************************************************
+ *translate olan yaziyi normal duz yazi hali ile verir 
+ */
 
 add_shortcode("helix_wordTL_Reg_sc", "helix_word_translate_regular_shortcode");
 
 /**
- * Output the form.  parcalamadan translate (turkce) olarak vereecek 
+ *translate olan yaziyi normal duz yazi hali ile verir 
  *
  * @param      array  $atts   User defined attributes in shortcode tag
  */
@@ -183,14 +179,12 @@ function helix_word_translate_regular_shortcode($attr)
     $translate_data = "";
     $main_language_data = "";
     $data = $wpdb->get_row($wpdb->prepare("SELECT  translate,main_language, comment,  id  FROM " . $helixForm_tableNameMain . "  WHERE id = %d", $editId));
-
     $button_html_json = '<div class="row">';
- 
+
     $translate_data = "<strong>" . (htmlspecialchars($data->translate)) . "</strong>";
-    
+
     if ($desc == "on") {
         $desc_data = nl2br(htmlspecialchars($data->comment));
-
     }
 
     if ($main_language == "on") {
@@ -199,9 +193,7 @@ function helix_word_translate_regular_shortcode($attr)
 
     $button_html_json .= $main_language_data;
     $button_html_json .= $translate_data;
-
     $button_html_json .= $desc_data;
-
 
     if (!is_admin()) {
         $button_html_json .= '<a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=' . $editId . '" target="_blank" class="wp-first-item">edit</a>';

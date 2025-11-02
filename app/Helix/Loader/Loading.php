@@ -65,12 +65,10 @@ class Loading
     {
 
         // require_once ('DatabaseInstall.php');
-    new DatabaseInstall();
-//     $helix_plugin = new DatabaseInstall();
+        new DatabaseInstall();
+        //     $helix_plugin = new DatabaseInstall();
 
-// // Register activation hook with static method
-
-
+        // // Register activation hook with static method
     }
 
     public function registerMenu()
