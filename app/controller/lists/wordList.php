@@ -469,8 +469,6 @@ class Helix_wp_word_list_table extends WP_List_Table
 		) {
 
 			$post_ids = filter_input(INPUT_POST, 'helixMaps_id', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-
-
 			if (is_array($post_ids)) {
 
 				$post_ids = array_map('intval', $post_ids);
@@ -567,7 +565,6 @@ class Helix_wp_word_list_table extends WP_List_Table
 	private function html_dropdown($args)
 	{
 		?>
-
 		<div class="<?php echo (esc_attr($args['container']['class'])); ?>">
 			<label for="<?php echo (esc_attr($args['select']['id'])); ?>"
 				class="<?php echo (esc_attr($args['label']['class'])); ?>">
@@ -586,7 +583,6 @@ class Helix_wp_word_list_table extends WP_List_Table
 				?>
 			</select>
 		</div>
-
 		<?php
 	}
 
@@ -642,24 +638,24 @@ function helix_DataTABLE_page()
 
 
 
-		<h2> <?php esc_html_e('Word list', 'helix-lng') ?></h2>
+	<h2> <?php esc_html_e('Word list', 'helix-lng') ?></h2>
 
-		<div
-			style="background:#ECECEC;border:1px solid #CCC;padding:0 10px;margin-top:5px;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;">
-			<p><?php esc_html_e('Word list', 'helix-lng') ?> </p>
+	<div
+		style="background:#ECECEC;border:1px solid #CCC;padding:0 10px;margin-top:5px;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;">
+		<p><?php esc_html_e('Word list', 'helix-lng') ?> </p>
 
-		</div>
+	</div>
 
-		<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
-		<form id="movies-filter" method="post">
-			<!-- For plugins, we also need to ensure that the form posts back to our current page -->
-			<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-			<!-- Now we can render the completed list table -->
-			<?php
-			$searchLang = __('Word list', 'helix-lng');
-			$testListTable->search_box($searchLang, 'search_id');
-			$testListTable->display() ?>
-		</form>
+	<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
+	<form id="movies-filter" method="post">
+		<!-- For plugins, we also need to ensure that the form posts back to our current page -->
+		<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+		<!-- Now we can render the completed list table -->
+		<?php
+		$searchLang = __('Word list', 'helix-lng');
+		$testListTable->search_box($searchLang, 'search_id');
+		$testListTable->display() ?>
+	</form>
 
 
 	<?php

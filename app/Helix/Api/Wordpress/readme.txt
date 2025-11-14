@@ -1,16 +1,12 @@
 
-// curl --user helix:cansuyum http://english.test/wp-json/wp/v2/categoriesAndDepencyPostList
+// curl --user helix:8888 http://english.test/wp-json/wp/v2/categoriesAndDepencyPostList
 
 
 
 
 === WP REST API Helper ===
-Contributors: rabiulislamrobi
-Tags: rest api, api, rest,
-Requires at least: 4.7
-Tested up to: 5.4
-Requires PHP: 7.0
-License: GPLv2 or later
+
+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A plugin to help out WP REST API.
