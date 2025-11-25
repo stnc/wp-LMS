@@ -23,9 +23,9 @@
         <li>
             <a href="/wp-admin/admin.php?page=helix_word_list"><i
                     class="fas fa-copy"></i><?php esc_html_e('Kelimeler Listesi', 'helix-lng') ?></a>
-        </li>    
-        
-        
+        </li>
+
+
         <li>
             <a href="/wp-admin/admin.php?page=helix_about"><i
                     class="fas fa-circle-exclamation"></i><?php esc_html_e('Hakkinda', 'helix-lng') ?></a>
@@ -38,38 +38,25 @@
 
 
         <li>
-            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=create&id=132"><i
-                    class="fas fa-file-alt"></i><?php esc_html_e('Test sayfam', 'helix-lng') ?></a>
-        </li>
-
-
-
-        <li>
             <a href="#pagesmenu" data-bs-toggle="collapse" aria-expanded="false"
-                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Accordion example</a>
+                class="dropdown-toggle no-caret-down"><i class="fas fa-cog"></i>Test Pages</a>
             <ul class="collapse list-unstyled" id="pagesmenu">
+
                 <li>
-                    <a href="blank.html"><i class="fas fa-file"></i>Blank page</a>
-                </li>
-                <li>
-                    <a href="404.html"><i class="fas fa-info-circle"></i>404 Error page</a>
-                </li>
-                <li>
-                    <a href="500.html"><i class="fas fa-info-circle"></i>500 Error page</a>
+                    <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=145"><i
+                            class="fas fa-file-alt"></i><?php esc_html_e('Edit instant', 'helix-lng') ?></a>
                 </li>
 
                 <li>
-            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=145"><i
-                    class="fas fa-file-alt"></i><?php esc_html_e('Edit instant', 'helix-lng') ?></a>
-        </li>
+                    <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=168"><i
+                            class="fas fa-file-alt"></i><?php esc_html_e('Edit 2 instant', 'helix-lng') ?></a>
+                </li>
 
-        <li>
-            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=168"><i
-                    class="fas fa-file-alt"></i><?php esc_html_e('Edit 2 instant', 'helix-lng') ?></a>
-        </li>
+                <li>
+                    <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=create&id=132"><i
+                            class="fas fa-file-alt"></i><?php esc_html_e('Test sayfam', 'helix-lng') ?></a>
+                </li>
 
-
-        
             </ul>
         </li>
 
