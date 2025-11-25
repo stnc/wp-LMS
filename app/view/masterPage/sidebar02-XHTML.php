@@ -57,6 +57,19 @@
                 <li>
                     <a href="500.html"><i class="fas fa-info-circle"></i>500 Error page</a>
                 </li>
+
+                <li>
+            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=145"><i
+                    class="fas fa-file-alt"></i><?php esc_html_e('Edit instant', 'helix-lng') ?></a>
+        </li>
+
+        <li>
+            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=168"><i
+                    class="fas fa-file-alt"></i><?php esc_html_e('Edit 2 instant', 'helix-lng') ?></a>
+        </li>
+
+
+        
             </ul>
         </li>
 
