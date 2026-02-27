@@ -4,6 +4,7 @@
 # ignore everything in the "wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 wp-content/*
+vendor/*
 !wp-content/mu-plugins/
 !wp-content/plugins/
 !wp-content/themes/
@@ -25,3 +26,4 @@ node_modules/
 helix-english.zip
 backup.rar
 helix.rar
+helix.zip

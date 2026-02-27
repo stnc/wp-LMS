@@ -16,11 +16,16 @@ class EditorExplodeH extends Controller
     {
         global $wpdb;
         $this->helixFormTableNameMain = $wpdb->prefix . 'helix_words';
-        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/common_header.php');
+      
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/wrapper01-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/sidebar02-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/body03-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/nav04-XHTML.php');
+
 
         $this->engLib = new EditorExplodeLib();
 
-        if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'new')) {
+        if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'create')) {
             $this->create();
         }
 
@@ -104,10 +109,8 @@ class EditorExplodeH extends Controller
             $translate_language_json .= "</tr>";
         }
 
-
-
-        // echo "<pre>";
-        require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplodeXHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
     /**
@@ -138,8 +141,6 @@ class EditorExplodeH extends Controller
 
         //    echo "<pre>";
         //    print_r($translate_json);
-        //    echo "<pre>";
-        //    print_r($main_language_json);
 
         $wpdb->update(
             $helixFormTableNameMain,
@@ -186,7 +187,11 @@ class EditorExplodeH extends Controller
         $main_language_json = "";
         $button_html_json = "";
         foreach ($main_language_decode as $key => $value) {
-
+            $value = $this->engLib->modalVerbs($value);
+            $value = $this->engLib->conjunctions($value);
+            $value = $this->engLib->prepositions($value);
+            $value = $this->engLib->ComplexPrepositions($value);
+            $value = $this->engLib->prepositionsOfTime($value);
             $main_language_json .= $this->engLib->mainLanguageHtml($value);
             $button_html_json .= $this->engLib->helix_button_html_bootsrap($value, $key);
         }
@@ -196,12 +201,8 @@ class EditorExplodeH extends Controller
         $translate_decode = json_decode($translate_data, false, 512, JSON_BIGINT_AS_STRING);
         $translate_language_json = " ";
 
-
-
-        $gruplar = array_chunk($translate_decode, 4);
-
-        // Grupları yazdır
-        foreach ($gruplar as $index => $translate_decode) {
+        $groups = array_chunk($translate_decode, 4);
+        foreach ($groups as $index => $translate_decode) {
             $translate_language_json .= "<tr>";
             foreach ($translate_decode as $key => $value) {
                 $translate_language_json .= "<td>" . $this->engLib->htmlTranslate($value) . "</td>";
@@ -210,7 +211,8 @@ class EditorExplodeH extends Controller
         }
 
 
-        require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplodeXHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/editorExplode/editorExplode-XHTML.php');
+        require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
     }
 
     /**

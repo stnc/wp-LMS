@@ -1,7 +1,7 @@
 <?php
 namespace Helix\Api\General;
 
-class GeneralData {
+class WpInfo {
 
     /**
     * Construct Function
@@ -12,16 +12,14 @@ class GeneralData {
     }
 
     /**
-    * Add Custom Endpoint ( General )
+    * Add Custom Endpoint ( Menus )
     * @since 2.0.0
     */
     public function add_endpoint() {
-        register_rest_route('wp/v2', 'general', [
+        register_rest_route( 'wp/v2', 'wpinfo', [
             'methods' => 'GET',
             'callback' => [ $this, 'get_general_info' ],
-            'permission_callback' => function ($request) {
-                return is_user_logged_in();
-            },
+                    'permission_callback' => '__return_true'
         ]);
     }
 
@@ -44,4 +42,7 @@ class GeneralData {
         return $general;
     }
 
+
 }
+
+

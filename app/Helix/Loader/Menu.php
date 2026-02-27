@@ -29,12 +29,13 @@ class Menu
         add_submenu_page( "helix_homepage", 'Build',  __( 'Kelimeler', 'helix-lng' ) , 'manage_options', 'helix_word_list', 'helix_DataTABLE_page',null ); // list page 
 
         add_submenu_page( "helix_homepage", 'Build', __( 'About', 'helix-lng' ), 'manage_options', 'helix_about', 'helix_about_page',null );//  -- ABOUT 
+        add_submenu_page( "helix_homepage", 'Build', __( 'JQ', 'helix-lng' ), 'manage_options', 'helix_jq', 'helix_jq_page',null );//  -- ABOUT 
         
         
    
 
-        add_submenu_page( null, 'Build', __( 'fixed map', 'helix-lng' ), 'manage_options', 'editorH', 'editorH_page',null ); //sub 
-        add_submenu_page( null, 'Build', __( 'fixed map', 'helix-lng' ), 'manage_options', 'editor_explodeH', 'editor_explodeH_page',null ); //sub 
+        add_submenu_page( null, 'Build', __( 'Word Editor', 'helix-lng' ), 'manage_options', 'editorH', 'editorH_page',null ); //sub 
+        add_submenu_page( null, 'Build', __( 'sentence fragmentation', 'helix-lng' ), 'manage_options', 'sentenceFragmentation', 'sentence_fragmentation_page',null ); //sub 
        
        
     }

@@ -72,8 +72,8 @@ class Helix_wp_word_list_table extends WP_List_Table
 		parent::__construct(
 			array(
 				'singular' => __('helixMaps', 'sp'), //singular name of the listed records
-				'plural'   => __('helixMapss', 'sp'), //plural name of the listed records
-				'ajax'     => false //does this table support ajax?
+				'plural' => __('helixMapss', 'sp'), //plural name of the listed records
+				'ajax' => false //does this table support ajax?
 			)
 		);
 
@@ -166,7 +166,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 	}
 
 
-	private  function levelControl($item)
+	private function levelControl($item)
 	{
 		$result = '';
 		switch ($item) {
@@ -203,7 +203,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 			'main_language' => __('main_language', 'admin-table-tut'),
 
-			'translate'   => __('tr', 'admin-table-tut'),
+			'translate' => __('tr', 'admin-table-tut'),
 
 			// 'level'   => __('level', 'admin-table-tut'),
 
@@ -235,7 +235,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 		$editLangs = __('Edit', 'helix-lng');
 		$actions = [
 			// 'view' => sprintf('<a href="?page=%s&action=%s&helixMaps=%s&_wpnonce=%s">%s</a>', esc_attr($_REQUEST['page']), 'view', absint($item['id']), $delete_nonce,	$showLang),
-			'edit' => sprintf('<a href="?page=editorH&trigger=edit&id=%s&_wpnonce=%s">%s</a>',  absint($item['id']), $delete_nonce, $editLangs)
+			'edit' => sprintf('<a href="?page=editorH&trigger=edit&id=%s&_wpnonce=%s">%s</a>', absint($item['id']), $delete_nonce, $editLangs)
 		];
 
 		return $title . $this->row_actions($actions);
@@ -265,22 +265,22 @@ class Helix_wp_word_list_table extends WP_List_Table
 	 */
 	public function prepare_items()
 	{
-		$columns               = $this->get_columns();
-		$sortable              = $this->get_sortable_columns();
-		$hidden                = array();
-		$primary               = 'title';
+		$columns = $this->get_columns();
+		$sortable = $this->get_sortable_columns();
+		$hidden = array();
+		$primary = 'title';
 		$this->_column_headers = array($columns, $hidden, $sortable, $primary);
-		$data                  = array();
+		$data = array();
 
 		$this->process_bulk_action();
 
-		$per_page     = $this->get_items_per_page('helixMapss_per_page', 15);
+		$per_page = $this->get_items_per_page('helixMapss_per_page', 15);
 		$current_page = $this->get_pagenum();
-		$total_items  = self::record_count();
+		$total_items = self::record_count();
 
 		$this->set_pagination_args([
 			'total_items' => $total_items, //WE have to calculate the total number of items
-			'per_page'    => $per_page //WE have to determine how many items to show on a page
+			'per_page' => $per_page //WE have to determine how many items to show on a page
 		]);
 
 
@@ -311,12 +311,12 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 
 
-			$sql = "			SELECT w.* FROM  {$wpdb->prefix}helix_words AS w 
+			$sql = "SELECT w.* FROM  {$wpdb->prefix}helix_words AS w 
 			INNER JOIN {$wpdb->prefix}helix_level_categories AS cat  ON  w.level_cat_id=cat.level_id
 			WHERE main_language LIKE '%$search%' OR translate LIKE '%$search%' ";
 			if (!empty($_REQUEST['orderby'])) {
 				$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' DESC';
 			}
 
 			$sql .= " LIMIT $per_page";
@@ -328,9 +328,9 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 			if (!empty($_REQUEST['orderby'])) {
 				$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+				$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' DESC';
 			} else {
-				$sql .= ' ORDER BY w.id ASC';
+				$sql .= ' ORDER BY w.id DESC';
 			}
 
 			$sql .= " LIMIT $per_page";
@@ -421,33 +421,39 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 
 
-?>
+			?>
 			<div id="advanced" class="postbox ">
 				<div class="inside">
 					<div class="card shadow1" style="max-width:100%!important">
 						<h2> <strong><?php echo $data->company_description; ?></strong> -- Info</h2>
 
-						<div><mark class="dont"><?php esc_html_e('Company', 'helix-lng') ?> :</mark> <?php echo $data->company_description; ?></div>
+						<div><mark class="dont"><?php esc_html_e('Company', 'helix-lng') ?> :</mark>
+							<?php echo $data->company_description; ?></div>
 						<hr>
-						<div><mark class="dont"><?php esc_html_e('Detail Info', 'helix-lng') ?>:</mark> <?php echo $data->company_name; ?></div>
+						<div><mark class="dont"><?php esc_html_e('Detail Info', 'helix-lng') ?>:</mark>
+							<?php echo $data->company_name; ?></div>
 						<hr>
 						<div><mark class="dont"><?php esc_html_e('Phone', 'helix-lng') ?>:</mark> <?php echo $data->phone; ?></div>
 						<hr>
 						<div><mark class="dont"><?php esc_html_e('Email', 'helix-lng') ?>:</mark> <?php echo $data->email; ?></div>
 						<hr>
-						<div><mark class="dont"><?php esc_html_e('Web Site', 'helix-lng') ?>:</mark> <?php echo $data->web_site; ?></div>
+						<div><mark class="dont"><?php esc_html_e('Web Site', 'helix-lng') ?>:</mark> <?php echo $data->web_site; ?>
+						</div>
 						<hr>
-						<div><mark class="dont"><?php esc_html_e('Adresss', 'helix-lng') ?>:</mark> <?php echo $data->main_language; ?></div>
+						<div><mark class="dont"><?php esc_html_e('Adresss', 'helix-lng') ?>:</mark>
+							<?php echo $data->main_language; ?></div>
 						<hr>
 
-						<div><mark class="dont"></mark> <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=show&building_id=<?php echo $data->building_id; ?>&_id=<?php echo $data->_id; ?>&id=<?php echo $data->id; ?>"><?php esc_html_e('Edit', 'helix-lng') ?></a> </div>
+						<div><mark class="dont"></mark> <a
+								href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=show&building_id=<?php echo $data->building_id; ?>&_id=<?php echo $data->_id; ?>&id=<?php echo $data->id; ?>"><?php esc_html_e('Edit', 'helix-lng') ?></a>
+						</div>
 						<hr>
 						<!-- <div><mark class="dont">Eklenen Dosya:</mark><?php echo $oynat ?></div> -->
 					</div>
 				</div>
 			</div>
 
-		<?php
+			<?php
 
 
 
@@ -457,13 +463,12 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 
 		// If the delete bulk action is triggered
-		if ((isset($_POST['action']) && $_POST['action'] == 'bulk-delete')
+		if (
+			(isset($_POST['action']) && $_POST['action'] == 'bulk-delete')
 			|| (isset($_POST['action2']) && $_POST['action2'] == 'bulk-delete')
 		) {
 
 			$post_ids = filter_input(INPUT_POST, 'helixMaps_id', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-
-
 			if (is_array($post_ids)) {
 
 				$post_ids = array_map('intval', $post_ids);
@@ -501,12 +506,12 @@ class Helix_wp_word_list_table extends WP_List_Table
 		?>
 		<div class="tablenav <?php echo esc_attr($which); ?>">
 
-			<?php if ($this->has_items()) : ?>
+			<?php if ($this->has_items()): ?>
 				<div class="alignleft actions bulkactions">
 					<?php //$this->bulk_actions($which); 
-					?>
+								?>
 				</div>
-			<?php
+				<?php
 			endif;
 			// $this->extra_tablenav($which);
 			$this->pagination($which);
@@ -514,7 +519,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 			<br class="clear" />
 		</div>
-	<?php
+		<?php
 	}
 
 	/**
@@ -529,17 +534,17 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 		if ('top' === $which) {
 			$drafts_dropdown_arg = array(
-				'options'   => array('' => 'All') + $this->allowed_post_types_readable(),
+				'options' => array('' => 'All') + $this->allowed_post_types_readable(),
 				'container' => array(
 					'class' => 'alignleft actions',
 				),
-				'label'     => array(
-					'class'      => 'screen-reader-text',
+				'label' => array(
+					'class' => 'screen-reader-text',
 					'inner_text' => __('Filter by Post Type', 'admin-table-tut'),
 				),
-				'select'    => array(
-					'name'     => 'type',
-					'id'       => 'filter-by-type',
+				'select' => array(
+					'name' => 'type',
+					'id' => 'filter-by-type',
 					'selected' => filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING),
 				),
 			);
@@ -559,8 +564,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 	 */
 	private function html_dropdown($args)
 	{
-	?>
-
+		?>
 		<div class="<?php echo (esc_attr($args['container']['class'])); ?>">
 			<label for="<?php echo (esc_attr($args['select']['id'])); ?>"
 				class="<?php echo (esc_attr($args['label']['class'])); ?>">
@@ -569,18 +573,17 @@ class Helix_wp_word_list_table extends WP_List_Table
 				id="<?php echo (esc_attr($args['select']['id'])); ?>">
 				<?php
 				foreach ($args['options'] as $id => $title) {
-				?>
+					?>
 					<option <?php if ($args['select']['selected'] === $id) { ?> selected="selected" <?php } ?>
 						value="<?php echo (esc_attr($id)); ?>">
 						<?php echo esc_html(\ucwords($title)); ?>
 					</option>
-				<?php
+					<?php
 				}
 				?>
 			</select>
 		</div>
-
-	<?php
+		<?php
 	}
 
 	/**
@@ -592,14 +595,13 @@ class Helix_wp_word_list_table extends WP_List_Table
 	{
 
 		return array(
-			'main_language'  => array('main_language', false),
-			'translate'   => array('translate', false),
-			'level'   => array('level', false),
+			'main_language' => array('main_language', false),
+			'translate' => array('translate', false),
+			'level' => array('level', false),
 
 		);
 	}
 }
-
 
 
 
@@ -632,39 +634,31 @@ function helix_DataTABLE_page()
 	$testListTable->prepare_items();
 
 	?>
-	<div class="wrap">
 
-		<a style=" background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;" href="/wp-admin/admin.php?page=helix_empty_building_list"><?php esc_html_e('other buton ', 'helix-lng') ?></a>
 
-		<div id="icon-users" class="icon32"><br /></div>
-		<h2> <?php esc_html_e('Word list', 'helix-lng') ?></h2>
 
-		<div
-			style="background:#ECECEC;border:1px solid #CCC;padding:0 10px;margin-top:5px;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;">
-			<p><?php esc_html_e('Word list', 'helix-lng') ?> </p>
 
-		</div>
+	<h2> <?php esc_html_e('Word list', 'helix-lng') ?></h2>
 
-		<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
-		<form id="movies-filter" method="post">
-			<!-- For plugins, we also need to ensure that the form posts back to our current page -->
-			<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-			<!-- Now we can render the completed list table -->
-			<?php
-			$searchLang =  __('Word list', 'helix-lng');
-			$testListTable->search_box($searchLang, 'search_id');
-			$testListTable->display() ?>
-		</form>
+	<div
+		style="background:#ECECEC;border:1px solid #CCC;padding:0 10px;margin-top:5px;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;">
+		<p><?php esc_html_e('Word list', 'helix-lng') ?> </p>
 
 	</div>
-<?php
+
+	<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
+	<form id="movies-filter" method="post">
+		<!-- For plugins, we also need to ensure that the form posts back to our current page -->
+		<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+		<!-- Now we can render the completed list table -->
+		<?php
+		$searchLang = __('Word list', 'helix-lng');
+		$testListTable->search_box($searchLang, 'search_id');
+		$testListTable->display() ?>
+	</form>
+
+
+	<?php
+
+
 }

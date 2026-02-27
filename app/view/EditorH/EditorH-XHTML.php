@@ -11,40 +11,39 @@ if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) {
     //$title = esc_html_e('Show', 'helix-lng');
     $form = '<form action="/wp-admin/admin.php?page=editorH&trigger=update&id=' . $id . '" method="post">';
 }
-
-include("common_header.php");
 ?>
 
-
-
-
-
-<main class="flex-shrink-0" style="">
+<div class="content">
     <div class="container-fluid">
 
+
         <?php
-        if (isset($_SESSION['helix_map_flash_msg'])) {
+        if (isset($_SESSION['helix_flash_msg'])) {
             ?>
             <p class="alert alert-success">
-                <?php echo $_SESSION['helix_map_flash_msg']; ?>
+                <?php echo $_SESSION['helix_flash_msg']; ?>
             </p>
-            <?php unset($_SESSION['helix_map_flash_msg']); ?>
+            <?php unset($_SESSION['helix_flash_msg']); ?>
         <?php } ?>
 
         <?php echo $form ?>
 
         <input type="hidden" value="<?php echo $media_id ?>" name="media_id" id="media_id">
+
+
+
+
+
+
+
         <div class="row">
 
             <div class="col-8">
-                <h5 class="card-title"> <?php esc_html_e('Language Add', 'helix-lng') ?></h5>
+
                 <div class="card" style="max-width:100%">
+                    <div class="card-header"><?php esc_html_e('Language Add', 'helix-lng') ?></div>
                     <div class="card-body">
-
-
-
-
-
+                        <h5 class="card-title"></h5>
                         <div class="form-group">
                             <span>Ne tur bir konusma metni? </span>
                             <?php if ((isset($_GET['trigger'])) && ($_GET['trigger'] === 'edit')) { ?>
@@ -55,7 +54,7 @@ include("common_header.php");
                                         <input class="form-check-input" type="checkbox" <?php if ($checkControl) {
                                             echo 'checked';
                                         } ?> name="speakLevelList[]"
-                                            for="speakLevelList<?php echo $categories->level_id ?>"
+                                            id="speakLevelList<?php echo $categories->level_id ?>"
                                             value="<?php echo $categories->level_id ?>">
                                         <label class="form-check-label"
                                             for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
@@ -63,14 +62,13 @@ include("common_header.php");
 
                                 <?php endforeach ?>
                             <?php } else { ?>
-                                <?php foreach ($categoriesSpeakLevelList as $categories): ?>
+                                <?php foreach ($categoriesSpeakLevelList as $key => $categories): ?>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" <?php if ($categories->level_id == $level)
-                                            echo 'checked'; ?> name="speakLevelList[]"
-                                            for="speakLevelList<?php echo $categories->id ?>"
+                                        <input class="form-check-input" type="checkbox" name="speakLevelList[]"
+                                            id="speakLevelList<?php echo $key ?>"
                                             value="<?php echo $categories->level_id ?>">
                                         <label class="form-check-label"
-                                            for="speakLevelList<?php echo $categories->level_id ?>"><?php echo $categories->name ?></label>
+                                            for="speakLevelList<?php echo $key ?>"><?php echo $categories->name ?></label>
                                     </div>
                                 <?php endforeach ?>
 
@@ -88,7 +86,8 @@ include("common_header.php");
                                     <option <?php if ($categories->level_id == $level_cat_id)
                                         echo 'selected'; ?>
                                         for="level_cat_id" value="<?php echo $categories->level_id ?>">
-                                        <?php echo $categories->name ?></option>
+                                        <?php echo $categories->name ?>
+                                    </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -104,7 +103,8 @@ include("common_header.php");
                                     <option <?php if ($value->vocable_level_id == $vocable_level)
                                         echo 'selected'; ?>
                                         for="level" value="<?php echo $value->vocable_level_id ?>">
-                                        <?php echo $value->name ?></option>
+                                        <?php echo $value->name ?>
+                                    </option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -211,12 +211,12 @@ include("common_header.php");
                         $delete_nonce = wp_create_nonce('sp_delete_helixMaps'); ?>
 
                         <?php if ($is_json == 1): ?>
-                            <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=edit&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
+                            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=edit&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
                                 id="savebtn-helixMap2" class="btn btn-primary">Parcalanmis Kelimeyi Duzenle</a>
                         <?php endif; ?>
 
                         <?php if ($is_json == 0): ?>
-                            <a href="/wp-admin/admin.php?page=editor_explodeH&trigger=new&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
+                            <a href="/wp-admin/admin.php?page=sentenceFragmentation&trigger=create&id=<?php echo $id; ?>&_wpnonce=<?php echo $delete_nonce; ?>"
                                 id="savebtn-helixMap2" class="btn btn-primary">Kelimeyi Parcala</a>
                         <?php endif; ?>
 
@@ -226,7 +226,7 @@ include("common_header.php");
         </div>
 
         <?php echo '</form>' ?>
+
+
     </div>
-
-
-</main>
+</div>
