@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'wp_helix/framework',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '4ae5a40bb01e73829ab807faadb3e3a4a61c50ff',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -176,9 +176,9 @@
             'dev_requirement' => false,
         ),
         'wp_helix/framework' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '4ae5a40bb01e73829ab807faadb3e3a4a61c50ff',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

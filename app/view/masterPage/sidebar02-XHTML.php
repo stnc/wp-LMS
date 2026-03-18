@@ -17,18 +17,18 @@
 
         <li>
             <a href="/wp-admin/admin.php?page=helix_homepage"><i
-                    class=" fas fa-layer-group"></i><?php esc_html_e('Kelimator Homepage', 'helix-lng') ?></a>
+                    class=" fas fa-layer-group"></i><?php esc_html_e('Homepage', 'helix-lng') ?></a>
         </li>
 
         <li>
             <a href="/wp-admin/admin.php?page=helix_word_list"><i
-                    class="fas fa-copy"></i><?php esc_html_e('Kelimeler Listesi', 'helix-lng') ?></a>
+                    class="fas fa-copy"></i><?php esc_html_e('Word List', 'helix-lng') ?></a>
         </li>
 
 
         <li>
             <a href="/wp-admin/admin.php?page=helix_about"><i
-                    class="fas fa-circle-exclamation"></i><?php esc_html_e('Hakkinda', 'helix-lng') ?></a>
+                    class="fas fa-circle-exclamation"></i><?php esc_html_e('About', 'helix-lng') ?></a>
         </li>
 
         <li>

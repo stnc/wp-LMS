@@ -19,7 +19,9 @@ could’ not
 // $plugin_data_helix = get_plugin_data( __FILE__ );
 // $HelixPluginVersion = $plugin_data_helix['Version'];
 
-
+add_action('admin_init', function() {
+    if (function_exists('set_current_screen')) return;
+}, 1);
 
 $HelixPluginVersion = "5.1";
 require_once __DIR__ . '/vendor/autoload.php'; // Autoload files using Composer autoload

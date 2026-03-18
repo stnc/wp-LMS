@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    platform: linux/arm64  # M4 uyumluluğu için
+    container_name: mysql_m4
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+    ports:
+      - "3306:3306"  # Herd çakışmasını önlemek için 3307
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backend2
+
+  adminer:
+    image: adminer
+    restart: always
+    container_name: adminer_m4
+    ports:
+    - "8585:8585"
+    command:
+    - 'php'
+    - '-S'
+    - '[::]:8585'
+    - '-t'
+    - '/var/www/html'
+    entrypoint:
+    - 'entrypoint.sh'
+    - 'docker-php-entrypoint'
+    networks:
+      - backend2 
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mysql-data:

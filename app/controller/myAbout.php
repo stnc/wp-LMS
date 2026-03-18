@@ -122,5 +122,3 @@ require(HELIX_PLUGIN_PATH . 'app/view/masterPage/nav04-XHTML.php');
         <?php
         require(HELIX_PLUGIN_PATH . 'app/view/masterPage/bodyClose05-XHTML.php');
 }
-
-

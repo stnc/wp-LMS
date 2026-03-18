@@ -311,7 +311,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 
 
 
-			$sql = "SELECT w.* FROM  {$wpdb->prefix}helix_words AS w 
+		echo 	$sql = "SELECT w.* FROM  {$wpdb->prefix}helix_words AS w 
 			INNER JOIN {$wpdb->prefix}helix_level_categories AS cat  ON  w.level_cat_id=cat.level_id
 			WHERE main_language LIKE '%$search%' OR translate LIKE '%$search%' ";
 			if (!empty($_REQUEST['orderby'])) {
@@ -323,7 +323,7 @@ class Helix_wp_word_list_table extends WP_List_Table
 			$sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
 			$result = $wpdb->get_results($sql, 'ARRAY_A');
 		} else {
-			$sql = "			SELECT w.* FROM  {$wpdb->prefix}helix_words AS w 
+		echo 	$sql = "			SELECT w.* FROM  {$wpdb->prefix}helix_words AS w 
 			  INNER JOIN {$wpdb->prefix}helix_level_categories AS cat  ON  w.level_cat_id=cat.level_id ";
 
 			if (!empty($_REQUEST['orderby'])) {
